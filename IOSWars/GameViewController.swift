@@ -2,7 +2,7 @@
 //  GameViewController.swift
 //  IOSWars
 //
-//  Created by Younggi Kim on 2020-02-07.
+//  Created by CodersDroid on 2020-02-07.
 //  Copyright © 2020 CoderDroids. All rights reserved.
 //
 
@@ -17,27 +17,36 @@ class GameViewController: UIViewController {
         
         // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
         // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
+        if let scene = GKScene(fileNamed: "MainMenuScene") {
             
             // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
+            if let sceneNode = scene.rootNode as! MainMenuScene? {
+                
+                let skView = view as! SKView
+                skView.showsFPS = true
+                skView.showsNodeCount = true
+                skView.ignoresSiblingOrder = true
+                skView.presentScene(sceneNode)
+                
+                sceneNode.scaleMode = .resizeFill
+                
                 
                 // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
+                //sceneNode.entities = scene.entities
+                //sceneNode.graphs = scene.graphs
                 
                 // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
+                //sceneNode.scaleMode = .aspectFill
                 
                 // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
+//                if let view = self.view as! SKView? {
+//                    view.presentScene(sceneNode)
+//
+//                    view.ignoresSiblingOrder = true
+//
+//                    view.showsFPS = true
+//                    view.showsNodeCount = true
+//                }
             }
         }
     }

@@ -17,6 +17,8 @@
 		A246980923EE6AF70000D5CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A246980723EE6AF70000D5CA /* LaunchScreen.storyboard */; };
 		A246981423EE6AF80000D5CA /* IOSWarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246981323EE6AF80000D5CA /* IOSWarsTests.swift */; };
 		A246981F23EE6AF80000D5CA /* IOSWarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246981E23EE6AF80000D5CA /* IOSWarsUITests.swift */; };
+		A246983123EE825E0000D5CA /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A246983023EE825E0000D5CA /* MainMenuScene.sks */; };
+		A2587A0D23F65DFA0077AFAE /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2587A0C23F65DFA0077AFAE /* MainMenuScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		A246981A23EE6AF80000D5CA /* IOSWarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSWarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A246981E23EE6AF80000D5CA /* IOSWarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWarsUITests.swift; sourceTree = "<group>"; };
 		A246982023EE6AF80000D5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A246983023EE825E0000D5CA /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		A2587A0C23F65DFA0077AFAE /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 		A24697F723EE6AF30000D5CA /* IOSWars */ = {
 			isa = PBXGroup;
 			children = (
+				A246983023EE825E0000D5CA /* MainMenuScene.sks */,
+				A2587A0C23F65DFA0077AFAE /* MainMenuScene.swift */,
 				A24697F823EE6AF30000D5CA /* AppDelegate.swift */,
 				A24697FA23EE6AF30000D5CA /* GameScene.sks */,
 				A24697FC23EE6AF30000D5CA /* Actions.sks */,
@@ -242,6 +248,7 @@
 				A24697FB23EE6AF30000D5CA /* GameScene.sks in Resources */,
 				A246980623EE6AF70000D5CA /* Assets.xcassets in Resources */,
 				A246980923EE6AF70000D5CA /* LaunchScreen.storyboard in Resources */,
+				A246983123EE825E0000D5CA /* MainMenuScene.sks in Resources */,
 				A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +276,7 @@
 			files = (
 				A24697FF23EE6AF30000D5CA /* GameScene.swift in Sources */,
 				A246980123EE6AF30000D5CA /* GameViewController.swift in Sources */,
+				A2587A0D23F65DFA0077AFAE /* MainMenuScene.swift in Sources */,
 				A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
