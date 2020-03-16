@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A22848C424201C7E003AB097 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = A22848C324201C7E003AB097 /* MyTileSet.sks */; };
 		A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24697F823EE6AF30000D5CA /* AppDelegate.swift */; };
 		A24697FB23EE6AF30000D5CA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A24697FA23EE6AF30000D5CA /* GameScene.sks */; };
 		A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A24697FC23EE6AF30000D5CA /* Actions.sks */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A22848C324201C7E003AB097 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
 		A24697F523EE6AF30000D5CA /* IOSWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24697F823EE6AF30000D5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A24697FA23EE6AF30000D5CA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -110,14 +112,15 @@
 				A246983023EE825E0000D5CA /* MainMenuScene.sks */,
 				A2587A0C23F65DFA0077AFAE /* MainMenuScene.swift */,
 				A24697F823EE6AF30000D5CA /* AppDelegate.swift */,
-				A24697FA23EE6AF30000D5CA /* GameScene.sks */,
 				A24697FC23EE6AF30000D5CA /* Actions.sks */,
+				A24697FA23EE6AF30000D5CA /* GameScene.sks */,
 				A24697FE23EE6AF30000D5CA /* GameScene.swift */,
 				A246980023EE6AF30000D5CA /* GameViewController.swift */,
 				A246980223EE6AF30000D5CA /* Main.storyboard */,
 				A246980523EE6AF70000D5CA /* Assets.xcassets */,
 				A246980723EE6AF70000D5CA /* LaunchScreen.storyboard */,
 				A246980A23EE6AF70000D5CA /* Info.plist */,
+				A22848C324201C7E003AB097 /* MyTileSet.sks */,
 			);
 			path = IOSWars;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				A246980423EE6AF30000D5CA /* Main.storyboard in Resources */,
 				A24697FB23EE6AF30000D5CA /* GameScene.sks in Resources */,
 				A246980623EE6AF70000D5CA /* Assets.xcassets in Resources */,
+				A22848C424201C7E003AB097 /* MyTileSet.sks in Resources */,
 				A246980923EE6AF70000D5CA /* LaunchScreen.storyboard in Resources */,
 				A246983123EE825E0000D5CA /* MainMenuScene.sks in Resources */,
 				A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */,

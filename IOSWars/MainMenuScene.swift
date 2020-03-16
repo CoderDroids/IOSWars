@@ -28,6 +28,7 @@ class MainMenuScene: SKScene {
         //if userDefaults.bool( forKey : "hard" ) {
         //
         //}
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent? )
@@ -36,15 +37,13 @@ class MainMenuScene: SKScene {
         
         if let location = touch?.location( in: self )
         {
-            let nodesArray = self.nodes(at: location )
-            
-            if nodesArray.first?.name == "PlayButton" {
+            if playButtonNode.contains(location) {
                 let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
-                let gameScene = GameScene( size: self.size )
+                let gameScene = SKScene(fileNamed: "GameScene" )!
                 self.view?.presentScene( gameScene, transition: transition )
-            } else if nodesArray.first?.name == "OptionButton" {
+            } else if optionButtonNode.contains(location) {
                 
-            } else if nodesArray.first?.name == "CreditButton" {
+            } else if creditButtonNode.contains(location) {
                 
             }
         }
