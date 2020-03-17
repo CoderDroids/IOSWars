@@ -10,16 +10,12 @@ import SpriteKit
 
 
 class MainMenuScene: SKScene {
-    var backgroundEffect : SKEmitterNode!
     var playButtonNode : SKSpriteNode!
     var optionButtonNode : SKSpriteNode!
     var creditButtonNode : SKSpriteNode!
     
     override func didMove(to view: SKView )
     {
-        backgroundEffect = self.childNode( withName : "BackgroundEffect" ) as! SKEmitterNode
-        backgroundEffect.advanceSimulationTime(10)
-        
         playButtonNode = self.childNode( withName : "PlayButton" ) as! SKSpriteNode
         optionButtonNode = self.childNode( withName : "OptionButton" ) as! SKSpriteNode
         creditButtonNode = self.childNode( withName : "CreditButton" ) as! SKSpriteNode
