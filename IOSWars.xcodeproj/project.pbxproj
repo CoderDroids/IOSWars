@@ -13,6 +13,10 @@
 		A2111D002420859000EB6CF3 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2111CFB2420858F00EB6CF3 /* GameScene.sks */; };
 		A2111D012420859000EB6CF3 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2111CFC2420858F00EB6CF3 /* GameScene.swift */; };
 		A2111D03242085B000EB6CF3 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2111D02242085B000EB6CF3 /* SplashScene.swift */; };
+		A2111D0524242BE900EB6CF3 /* OptionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2111D0424242BE900EB6CF3 /* OptionScene.sks */; };
+		A2111D0724242BFC00EB6CF3 /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2111D0624242BFC00EB6CF3 /* OptionScene.swift */; };
+		A2111D0924242C0D00EB6CF3 /* CreditScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2111D0824242C0D00EB6CF3 /* CreditScene.swift */; };
+		A2111D0B24242C1B00EB6CF3 /* CreditScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2111D0A24242C1B00EB6CF3 /* CreditScene.sks */; };
 		A22848C424201C7E003AB097 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = A22848C324201C7E003AB097 /* MyTileSet.sks */; };
 		A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24697F823EE6AF30000D5CA /* AppDelegate.swift */; };
 		A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A24697FC23EE6AF30000D5CA /* Actions.sks */; };
@@ -48,6 +52,10 @@
 		A2111CFB2420858F00EB6CF3 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		A2111CFC2420858F00EB6CF3 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A2111D02242085B000EB6CF3 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
+		A2111D0424242BE900EB6CF3 /* OptionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OptionScene.sks; sourceTree = "<group>"; };
+		A2111D0624242BFC00EB6CF3 /* OptionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
+		A2111D0824242C0D00EB6CF3 /* CreditScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditScene.swift; sourceTree = "<group>"; };
+		A2111D0A24242C1B00EB6CF3 /* CreditScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CreditScene.sks; sourceTree = "<group>"; };
 		A22848C324201C7E003AB097 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
 		A24697F523EE6AF30000D5CA /* IOSWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24697F823EE6AF30000D5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +98,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A2111CF72420858F00EB6CF3 /* GameScenes */ = {
+		A2111CF72420858F00EB6CF3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				A2111CF82420858F00EB6CF3 /* MainMenuScene.sks */,
@@ -99,8 +107,12 @@
 				A2111D02242085B000EB6CF3 /* SplashScene.swift */,
 				A2111CFB2420858F00EB6CF3 /* GameScene.sks */,
 				A2111CFC2420858F00EB6CF3 /* GameScene.swift */,
+				A2111D0424242BE900EB6CF3 /* OptionScene.sks */,
+				A2111D0624242BFC00EB6CF3 /* OptionScene.swift */,
+				A2111D0A24242C1B00EB6CF3 /* CreditScene.sks */,
+				A2111D0824242C0D00EB6CF3 /* CreditScene.swift */,
 			);
-			path = GameScenes;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		A24697EC23EE6AF30000D5CA = {
@@ -126,7 +138,7 @@
 		A24697F723EE6AF30000D5CA /* IOSWars */ = {
 			isa = PBXGroup;
 			children = (
-				A2111CF72420858F00EB6CF3 /* GameScenes */,
+				A2111CF72420858F00EB6CF3 /* Scenes */,
 				A24697F823EE6AF30000D5CA /* AppDelegate.swift */,
 				A24697FC23EE6AF30000D5CA /* Actions.sks */,
 				A246980023EE6AF30000D5CA /* GameViewController.swift */,
@@ -268,7 +280,9 @@
 				A2111D002420859000EB6CF3 /* GameScene.sks in Resources */,
 				A246980923EE6AF70000D5CA /* LaunchScreen.storyboard in Resources */,
 				A2111CFD2420859000EB6CF3 /* MainMenuScene.sks in Resources */,
+				A2111D0B24242C1B00EB6CF3 /* CreditScene.sks in Resources */,
 				A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */,
+				A2111D0524242BE900EB6CF3 /* OptionScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,10 +308,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2111CFE2420859000EB6CF3 /* MainMenuScene.swift in Sources */,
+				A2111D0724242BFC00EB6CF3 /* OptionScene.swift in Sources */,
 				A2111D03242085B000EB6CF3 /* SplashScene.swift in Sources */,
 				A246980123EE6AF30000D5CA /* GameViewController.swift in Sources */,
 				A2111D012420859000EB6CF3 /* GameScene.swift in Sources */,
 				A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */,
+				A2111D0924242C0D00EB6CF3 /* CreditScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
