@@ -34,6 +34,11 @@
 		A2A8C4692424696E0096D831 /* StatNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C4682424696E0096D831 /* StatNode.swift */; };
 		A2A8C46B24246A470096D831 /* TitleTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C46A24246A470096D831 /* TitleTextNode.swift */; };
 		A2A8C46D24246C200096D831 /* UnitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C46C24246C200096D831 /* UnitNode.swift */; };
+		A2A8C473242507120096D831 /* soldier.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C46E242507120096D831 /* soldier.png */; };
+		A2A8C474242507120096D831 /* catapult.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C46F242507120096D831 /* catapult.png */; };
+		A2A8C475242507120096D831 /* priest.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C470242507120096D831 /* priest.png */; };
+		A2A8C476242507120096D831 /* knight.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C471242507120096D831 /* knight.png */; };
+		A2A8C477242507120096D831 /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C472242507120096D831 /* tank.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +92,11 @@
 		A2A8C4682424696E0096D831 /* StatNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatNode.swift; sourceTree = "<group>"; };
 		A2A8C46A24246A470096D831 /* TitleTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextNode.swift; sourceTree = "<group>"; };
 		A2A8C46C24246C200096D831 /* UnitNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitNode.swift; sourceTree = "<group>"; };
+		A2A8C46E242507120096D831 /* soldier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soldier.png; sourceTree = "<group>"; };
+		A2A8C46F242507120096D831 /* catapult.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catapult.png; sourceTree = "<group>"; };
+		A2A8C470242507120096D831 /* priest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = priest.png; sourceTree = "<group>"; };
+		A2A8C471242507120096D831 /* knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knight.png; sourceTree = "<group>"; };
+		A2A8C472242507120096D831 /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +223,11 @@
 		A2A8C467242468E10096D831 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A2A8C46F242507120096D831 /* catapult.png */,
+				A2A8C471242507120096D831 /* knight.png */,
+				A2A8C470242507120096D831 /* priest.png */,
+				A2A8C46E242507120096D831 /* soldier.png */,
+				A2A8C472242507120096D831 /* tank.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -325,10 +340,15 @@
 				A246980423EE6AF30000D5CA /* Main.storyboard in Resources */,
 				A246980623EE6AF70000D5CA /* Assets.xcassets in Resources */,
 				A22848C424201C7E003AB097 /* MyTileSet.sks in Resources */,
+				A2A8C476242507120096D831 /* knight.png in Resources */,
 				A2111D002420859000EB6CF3 /* GameScene.sks in Resources */,
 				A246980923EE6AF70000D5CA /* LaunchScreen.storyboard in Resources */,
 				A2111CFD2420859000EB6CF3 /* MainMenuScene.sks in Resources */,
 				A2111D0B24242C1B00EB6CF3 /* CreditScene.sks in Resources */,
+				A2A8C473242507120096D831 /* soldier.png in Resources */,
+				A2A8C474242507120096D831 /* catapult.png in Resources */,
+				A2A8C477242507120096D831 /* tank.png in Resources */,
+				A2A8C475242507120096D831 /* priest.png in Resources */,
 				A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */,
 				A2111D0524242BE900EB6CF3 /* OptionScene.sks in Resources */,
 			);

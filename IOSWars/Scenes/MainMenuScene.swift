@@ -17,6 +17,11 @@ class MainMenuScene: SKScene {
     
     override func didMove(to view: SKView )
     {
+        let w = UIScreen.main.bounds.width
+        let h = UIScreen.main.bounds.height
+        var size = self.size
+
+        
         continueButton = self.childNode( withName : "ContinueButton" ) as! SKSpriteNode
         newGameButton = self.childNode( withName : "NewGameButton" ) as! SKSpriteNode
         optionButton = self.childNode( withName : "OptionButton" ) as! SKSpriteNode

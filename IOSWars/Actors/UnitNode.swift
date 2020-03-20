@@ -28,8 +28,23 @@ class UnitNode : SKNode
 
         parent.addChild( self )
         
-//        let unitTexture = ModelActor()
-//        background.addChild(unitTexture)
+        var textureName : String
+        switch type
+        {
+        case UnitType.Warrior:
+            textureName = "soldier.png"
+        case UnitType.Cleric:
+            textureName = "priest.png"
+        case UnitType.Knight:
+            textureName = "knight.png"
+        case UnitType.Catapult:
+            textureName = "tank.png"
+        default:
+            textureName = "soldier.png"
+        }
+        let unitTexture = ModelActor( texture : SKTexture( imageNamed: textureName))
+        unitTexture.size = CGSize( width : 80, height : 80 )
+        background.addChild(unitTexture)
 
     }
 }

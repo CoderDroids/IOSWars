@@ -30,13 +30,25 @@ class TroopAttackNode : SKNode
         }
         addChild( background )
      
-        let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.4), statName : "Strength", statValue: 10 )
-        
-        var pos1 : CGPoint = CGPoint( x : -100, y : 0 )
-        let troop1 = UnitNode( parent : background, pos : pos1, type : UnitType.Knight )
+        let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.35), statName : "Strength", statValue: 10 )
+    
+        // TODO : make this generic
+        if isAttacker == true {
+            var pos1 : CGPoint = CGPoint( x : -100, y : -50 )
+            let troop1 = UnitNode( parent : background, pos : pos1, type : UnitType.Knight )
 
-        var pos2 : CGPoint = CGPoint( x : 100, y : 0 )
-        let troop2 = UnitNode( parent : background, pos : pos2, type : UnitType.Catapult )
+            var pos2 : CGPoint = CGPoint( x : 100, y : -50 )
+            let troop2 = UnitNode( parent : background, pos : pos2, type : UnitType.Catapult )
+        
+            var pos3 : CGPoint = CGPoint( x : 0, y : 60 )
+            let troop3 = UnitNode( parent : background, pos : pos3, type : UnitType.Cleric )
+        } else {
+            var pos1 : CGPoint = CGPoint( x : -100, y : 50 )
+            let troop1 = UnitNode( parent : background, pos : pos1, type : UnitType.Warrior )
+
+            var pos2 : CGPoint = CGPoint( x : 100, y : 50 )
+            let troop2 = UnitNode( parent : background, pos : pos2, type : UnitType.Catapult )
+        }
 
         let troopNameNode = TitleTextNode( parent : background, pos : CGPoint( x : 0, y : -background.size.height * 0.4), titleName: troopName )
         
