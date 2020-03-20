@@ -13,10 +13,14 @@ class GameScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
+    var backButton : SKSpriteNode?
+    var workshopButton : SKSpriteNode?
+    var attackButton : SKSpriteNode?
+    
+    var workshopScene : SKNode?
+    var attackScene : SKNode?
     
     private var lastUpdateTime : TimeInterval = 0
-    
-    private var pauseButton : SKSpriteNode?
     
     override func sceneDidLoad() {
 
@@ -25,19 +29,38 @@ class GameScene: SKScene {
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
      
-        pauseButton = SKSpriteNode( color : SKColor.darkGray, size : CGSize( width : 50, height : 50 ))
-        pauseButton?.position.x = self.size.width * 0.5
-        pauseButton?.position.y = self.size.height * 0.5
-        self.addChild(pauseButton!)
-        let pauseText = SKLabelNode( fontNamed: "Helvetica" )
-        pauseText.text = "||"
-        pauseText.fontSize = 30
-        pauseText.fontColor = SKColor.red
-        pauseButton?.addChild(pauseText)
+        backButton = self.childNode( withName : "BackButton" ) as! SKSpriteNode
+        workshopButton = self.childNode( withName : "WorkshopSceneButton" ) as! SKSpriteNode
+        attackButton = self.childNode( withName : "AttackSceneButton" ) as! SKSpriteNode
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
+        
+        if backButton!.contains(pos) {
+            let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
+            let gameScene = SKScene(fileNamed: "MainMenuScene" )!
+            self.view?.presentScene( gameScene, transition: transition )
+        } else if (workshopButton?.contains( pos ))! {
+            if workshopScene == nil {
+                workshopScene = WorkshopScene( parent : self )
+            }
+        } else if (attackButton?.contains( pos ))! {
+            if attackScene == nil {
+                attackScene = AttackScene( parent : self )
+            }
+        } else {
+            if workshopScene != nil {
+                workshopScene?.removeFromParent()
+                workshopScene = nil
+            }
+            if attackScene != nil {
+                attackScene?.removeFromParent()
+                attackScene = nil
+            }
+            
+        }
+        
     }
     
     func touchMoved(toPoint pos : CGPoint) {
