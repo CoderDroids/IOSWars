@@ -42,12 +42,16 @@ class MainMenuScene: SKScene {
         {
             var sceneName : String?
             if continueButton.contains(location) {
+                Audio.instance.playEffect(name: "click")
                 sceneName = "GameScene"
             } else if newGameButton.contains(location) {
+                Audio.instance.playEffect(name: "click")
                 sceneName = "GameScene"
             } else if optionButton.contains(location) {
+                Audio.instance.playEffect(name: "click")
                 sceneName = "OptionScene"
             } else if creditButton.contains(location) {
+                Audio.instance.playEffect(name: "click")
                 sceneName = "CreditScene"
             }
             
