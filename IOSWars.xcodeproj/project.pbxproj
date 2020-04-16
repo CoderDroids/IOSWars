@@ -93,7 +93,7 @@
 		A2111D0824242C0D00EB6CF3 /* CreditScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditScene.swift; sourceTree = "<group>"; };
 		A2111D0A24242C1B00EB6CF3 /* CreditScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CreditScene.sks; sourceTree = "<group>"; };
 		A22848C324201C7E003AB097 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
-		A24697F523EE6AF30000D5CA /* IOSWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24697F523EE6AF30000D5CA /* SmallWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmallWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24697F823EE6AF30000D5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A24697FC23EE6AF30000D5CA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		A246980023EE6AF30000D5CA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		A24697F623EE6AF30000D5CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A24697F523EE6AF30000D5CA /* IOSWars.app */,
+				A24697F523EE6AF30000D5CA /* SmallWars.app */,
 				A246980F23EE6AF80000D5CA /* IOSWarsTests.xctest */,
 				A246981A23EE6AF80000D5CA /* IOSWarsUITests.xctest */,
 			);
@@ -349,7 +349,7 @@
 			);
 			name = IOSWars;
 			productName = IOSWars;
-			productReference = A24697F523EE6AF30000D5CA /* IOSWars.app */;
+			productReference = A24697F523EE6AF30000D5CA /* SmallWars.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A246980E23EE6AF80000D5CA /* IOSWarsTests */ = {
@@ -683,7 +683,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = VDQS4882Z8;
 				INFOPLIST_FILE = IOSWars/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -691,8 +691,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.coderdroids.ioswars;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coderdroids.smallwars;
+				PRODUCT_NAME = SmallWars;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -703,7 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = VDQS4882Z8;
 				INFOPLIST_FILE = IOSWars/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -711,8 +712,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.coderdroids.ioswars;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coderdroids.smallwars;
+				PRODUCT_NAME = SmallWars;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
