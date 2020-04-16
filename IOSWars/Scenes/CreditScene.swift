@@ -25,6 +25,7 @@ class CreditScene: SKScene {
         if let location = touch?.location( in: self )
         {
             if backButton.contains(location) {
+                Audio.instance.playEffect(name: "click")
                 let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
                 let gameScene = SKScene(fileNamed: "MainMenuScene" )!
                 self.view?.presentScene( gameScene, transition: transition )

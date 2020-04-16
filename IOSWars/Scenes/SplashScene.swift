@@ -16,6 +16,7 @@ class SplashScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent? )
     {
+        Audio.instance.playMusic(name: "main")
         let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
         let mainScene = SKScene(fileNamed: "MainMenuScene" )!
         self.view?.presentScene( mainScene, transition: transition )
