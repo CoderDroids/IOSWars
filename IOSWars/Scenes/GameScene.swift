@@ -127,13 +127,9 @@ class GameScene: SKScene {
             if isProcessed == false {
                 touchDownPoint = pos
                 mapDragStart = tileMap?.position
-                //attackButton?.isHidden = true
-                //workshopButton?.isHidden = true
                 backButton?.isHidden = true
                 dragging = true
                 
-                //print("POS: x: %f , y: %f",touchDownPoint!.x,touchDownPoint!.y);
-                //print("MAP: x: %f , y: %f",mapDragStart!.x,mapDragStart!.y);
 
                 if workshopScene != nil {
                     workshopScene?.removeFromParent()
@@ -153,23 +149,23 @@ class GameScene: SKScene {
             tileMap?.position = CGPoint(x: mapDragStart!.x-(touchDownPoint!.x-pos.x),
                                     y:mapDragStart!.y-(touchDownPoint!.y-pos.y))
             
+
             
+        
             //protects against dragging off map in x axis
-            if(abs((tileMap?.position.x)!) > abs(((tileMap?.mapSize.width)! - screenSize.width)/2))
+            if(abs((tileMap?.position.x)!) > abs((tileMap?.mapSize.width)!/(2*(1/(tileMap?.xScale)!))-(screenSize.width/2)))
             {
-                tileMap?.position = CGPoint(x: ((tileMap?.position.x)! < 0 ? -1 : 1) * abs(((tileMap?.mapSize.width)! - screenSize.width)/2),y:(tileMap?.position.y)!)
+                tileMap?.position = CGPoint(x: ((tileMap?.position.x)! < 0 ? -1 : 1) * abs((tileMap?.mapSize.width)!/(2*(1/(tileMap?.xScale)!))-(screenSize.width/2)),y:(tileMap?.position.y)!)
             }
             //protects against dragging off map in y axis
-            if(abs((tileMap?.position.y)!) > abs(((tileMap?.mapSize.height)! - screenSize.height)/2))
+            if(abs((tileMap?.position.y)!) > abs((tileMap?.mapSize.height)!/(2*(1/(tileMap?.yScale)!))-(screenSize.height/2)))
             {
-                tileMap?.position = CGPoint(x:(tileMap?.position.x)! ,y:  ((tileMap?.position.y)! < 0 ? -1 : 1) * abs(((tileMap?.mapSize.height)! - screenSize.height)/2))
+                tileMap?.position = CGPoint(x:(tileMap?.position.x)! ,y:  ((tileMap?.position.y)! < 0 ? -1 : 1) * abs((tileMap?.mapSize.height)!/(2*(1/(tileMap?.yScale)!))-(screenSize.height/2)))
             }
         }
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        //attackButton?.isHidden = false
-        //workshopButton?.isHidden = false
         backButton?.isHidden = false
         dragging = false
     }
