@@ -54,6 +54,7 @@
 		A22DDBE9244A287500A37E50 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBE8244A287500A37E50 /* Fighter.swift */; };
 		A22DDBEB244A287E00A37E50 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEA244A287E00A37E50 /* Knight.swift */; };
 		A22DDBED244A288500A37E50 /* Mage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEC244A288500A37E50 /* Mage.swift */; };
+		A22DDBEF244A3BBD00A37E50 /* BuildingInfoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEE244A3BBD00A37E50 /* BuildingInfoPopup.swift */; };
 		A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24697F823EE6AF30000D5CA /* AppDelegate.swift */; };
 		A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A24697FC23EE6AF30000D5CA /* Actions.sks */; };
 		A246980123EE6AF30000D5CA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246980023EE6AF30000D5CA /* GameViewController.swift */; };
@@ -159,6 +160,7 @@
 		A22DDBE8244A287500A37E50 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
 		A22DDBEA244A287E00A37E50 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		A22DDBEC244A288500A37E50 /* Mage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mage.swift; sourceTree = "<group>"; };
+		A22DDBEE244A3BBD00A37E50 /* BuildingInfoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingInfoPopup.swift; sourceTree = "<group>"; };
 		A24697F523EE6AF30000D5CA /* SmallWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmallWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24697F823EE6AF30000D5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A24697FC23EE6AF30000D5CA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			children = (
 				A2A8C45C24244C160096D831 /* AttackPopup.swift */,
 				A22DDBE32449F77100A37E50 /* UnitInfoPopup.swift */,
+				A22DDBEE244A3BBD00A37E50 /* BuildingInfoPopup.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				A2111CFE2420859000EB6CF3 /* MainMenuScene.swift in Sources */,
 				A2111D0724242BFC00EB6CF3 /* OptionScene.swift in Sources */,
 				A2A8C45D24244C160096D831 /* AttackPopup.swift in Sources */,
+				A22DDBEF244A3BBD00A37E50 /* BuildingInfoPopup.swift in Sources */,
 				A22DDBDF2449568100A37E50 /* EnemyBase.swift in Sources */,
 				A22DDBD82449470400A37E50 /* Unit.swift in Sources */,
 				A2A8C46D24246C200096D831 /* UnitNode.swift in Sources */,
