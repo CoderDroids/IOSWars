@@ -18,36 +18,48 @@ enum UnitType
 
 class Unit : SKSpriteNode
 {
-    var baseDamage : Float
+    var attack : Float
     var currentHealth : Float
     var maxHealth : Float
     var unitType : UnitType
+    var movementRange : Int
+    var unitCost : Int
     
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override init( texture: SKTexture!, color: SKColor, size: CGSize )
-    {
-        self.baseDamage = 0
-        self.currentHealth = 0
-        self.maxHealth = 0
-        self.unitType = UnitType.Fighter
-        super.init( texture: texture, color: color, size: size )
-    }
+//
+//    override init( texture: SKTexture!, color: SKColor, size: CGSize )
+//    {
+//        self.attack = 0
+//        self.currentHealth = 0
+//        self.maxHealth = 0
+//        self.unitType = UnitType.Fighter
+//        self.movementRange = 0
+//        self.unitCost = 0
+//        super.init( texture: texture, color: color, size: size )
+//    }
 
-    convenience init( parent : SKNode, type : UnitType, pos : CGPoint, size : CGSize, damage : Float, health : Float )
+    init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int, cost : Int )
     {
+                self.attack = 0
+                self.currentHealth = 0
+                self.maxHealth = 0
+                self.unitType = UnitType.Fighter
+                self.movementRange = 0
+                self.unitCost = 0
         let imageName = Unit.getUnitImage( type : type )
-        self.init( texture : SKTexture( imageNamed: imageName ), color : .white, size : size )
+        super.init( texture : SKTexture( imageNamed: imageName ), color : .white, size : CGSize( width : 64, height : 64 ) )
         parent.addChild(self)
-        self.position = pos
         
-        self.baseDamage = damage
+        self.position = pos
+        self.attack = damage
         self.maxHealth = health
-        self.currentHealth = self.maxHealth
+        self.currentHealth = health
         self.unitType = type
+        self.movementRange = movement
+        self.unitCost = cost
     }
     
     class func getUnitImage( type : UnitType ) -> String

@@ -51,6 +51,9 @@
 		A22DDBE12449DBFA00A37E50 /* EnemyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBE02449DBFA00A37E50 /* EnemyUnit.swift */; };
 		A22DDBE42449F77100A37E50 /* UnitInfoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBE32449F77100A37E50 /* UnitInfoPopup.swift */; };
 		A22DDBE62449FED800A37E50 /* PopupNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBE52449FED800A37E50 /* PopupNode.swift */; };
+		A22DDBE9244A287500A37E50 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBE8244A287500A37E50 /* Fighter.swift */; };
+		A22DDBEB244A287E00A37E50 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEA244A287E00A37E50 /* Knight.swift */; };
+		A22DDBED244A288500A37E50 /* Mage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEC244A288500A37E50 /* Mage.swift */; };
 		A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24697F823EE6AF30000D5CA /* AppDelegate.swift */; };
 		A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A24697FC23EE6AF30000D5CA /* Actions.sks */; };
 		A246980123EE6AF30000D5CA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246980023EE6AF30000D5CA /* GameViewController.swift */; };
@@ -153,6 +156,9 @@
 		A22DDBE02449DBFA00A37E50 /* EnemyUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyUnit.swift; sourceTree = "<group>"; };
 		A22DDBE32449F77100A37E50 /* UnitInfoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitInfoPopup.swift; sourceTree = "<group>"; };
 		A22DDBE52449FED800A37E50 /* PopupNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupNode.swift; sourceTree = "<group>"; };
+		A22DDBE8244A287500A37E50 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
+		A22DDBEA244A287E00A37E50 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
+		A22DDBEC244A288500A37E50 /* Mage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mage.swift; sourceTree = "<group>"; };
 		A24697F523EE6AF30000D5CA /* SmallWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmallWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24697F823EE6AF30000D5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A24697FC23EE6AF30000D5CA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -268,6 +274,16 @@
 			path = Popups;
 			sourceTree = "<group>";
 		};
+		A22DDBE7244A286800A37E50 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				A22DDBE8244A287500A37E50 /* Fighter.swift */,
+				A22DDBEA244A287E00A37E50 /* Knight.swift */,
+				A22DDBEC244A288500A37E50 /* Mage.swift */,
+			);
+			path = Units;
+			sourceTree = "<group>";
+		};
 		A24697EC23EE6AF30000D5CA = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +346,7 @@
 		A2A8C45B24244BE50096D831 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				A22DDBE7244A286800A37E50 /* Units */,
 				A22DDBE22449F71500A37E50 /* Popups */,
 				A22DDBD32449470400A37E50 /* Building.swift */,
 				A22DDBD52449470400A37E50 /* Enemy.swift */,
@@ -613,6 +630,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A22DDBDD2449470400A37E50 /* Player.swift in Sources */,
+				A22DDBE9244A287500A37E50 /* Fighter.swift in Sources */,
+				A22DDBED244A288500A37E50 /* Mage.swift in Sources */,
 				A2A8C464242450130096D831 /* UnitPriceNode.swift in Sources */,
 				A22DDBD92449470400A37E50 /* Building.swift in Sources */,
 				A2A8C46B24246A470096D831 /* TitleTextNode.swift in Sources */,
@@ -631,6 +650,7 @@
 				A2A8C4692424696E0096D831 /* StatNode.swift in Sources */,
 				A22DDBE12449DBFA00A37E50 /* EnemyUnit.swift in Sources */,
 				A2A8C45F24244C300096D831 /* WorkshopScene.swift in Sources */,
+				A22DDBEB244A287E00A37E50 /* Knight.swift in Sources */,
 				A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */,
 				A22DDBDB2449470400A37E50 /* Enemy.swift in Sources */,
 				A22DDBDC2449470400A37E50 /* Headquarter.swift in Sources */,

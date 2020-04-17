@@ -30,7 +30,7 @@ class TroopAttackNode : SKNode
         }
         addChild( background )
      
-        let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.35), statName : "Attack", statValue: Int(troop.baseDamage) )
+        let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.35), statName : "Attack", statValue: Int(troop.attack) )
     
         // TODO : make this generic
         let troopNode = UnitNode( parent : background, pos : CGPoint( x : 0, y : 0 ), type : troop.unitType )
