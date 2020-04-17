@@ -76,9 +76,8 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         
-        //var screenSpace = Pathfinding.instance.screenToMap(tap: pos)
-        //var tileSpace = Pathfinding.instance.MapToNode(pos: screenSpace)
-        //print(tileMap?.tileDefinition(atColumn: Int(tileSpace.x), row: Int(tileSpace.y))?.name)
+        Pathfinding.instance.tintTiles(pos: pos,range: 5)
+        
         if backButton!.contains(pos) {
             let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
             let gameScene = SKScene(fileNamed: "MainMenuScene" )!
@@ -186,6 +185,7 @@ class GameScene: SKScene {
     func touchUp(atPoint pos : CGPoint) {
         backButton?.isHidden = false
         dragging = false
+        Pathfinding.instance.clearTintedTiles()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
