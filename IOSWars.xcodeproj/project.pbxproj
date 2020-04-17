@@ -21,6 +21,26 @@
 		A2111D0924242C0D00EB6CF3 /* CreditScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2111D0824242C0D00EB6CF3 /* CreditScene.swift */; };
 		A2111D0B24242C1B00EB6CF3 /* CreditScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2111D0A24242C1B00EB6CF3 /* CreditScene.sks */; };
 		A22848C424201C7E003AB097 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = A22848C324201C7E003AB097 /* MyTileSet.sks */; };
+		A22DDBBE2449443100A37E50 /* white-tower.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBAA2449442E00A37E50 /* white-tower.png */; };
+		A22DDBBF2449443100A37E50 /* swordwoman.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBAB2449442F00A37E50 /* swordwoman.png */; };
+		A22DDBC02449443100A37E50 /* catapult_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBAC2449442F00A37E50 /* catapult_icon.png */; };
+		A22DDBC12449443100A37E50 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBAD2449442F00A37E50 /* play-button.png */; };
+		A22DDBC22449443100A37E50 /* pause-button.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBAE2449442F00A37E50 /* pause-button.png */; };
+		A22DDBC32449443100A37E50 /* wizard-face.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBAF2449442F00A37E50 /* wizard-face.png */; };
+		A22DDBC42449443100A37E50 /* catapult.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB02449442F00A37E50 /* catapult.png */; };
+		A22DDBC52449443100A37E50 /* stone-tower.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB12449442F00A37E50 /* stone-tower.png */; };
+		A22DDBC62449443100A37E50 /* troops.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB22449442F00A37E50 /* troops.png */; };
+		A22DDBC72449443100A37E50 /* black-bridge.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB32449442F00A37E50 /* black-bridge.png */; };
+		A22DDBC82449443100A37E50 /* knight.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB42449442F00A37E50 /* knight.png */; };
+		A22DDBC92449443100A37E50 /* wizard.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB52449443000A37E50 /* wizard.png */; };
+		A22DDBCA2449443100A37E50 /* resource.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB62449443000A37E50 /* resource.png */; };
+		A22DDBCB2449443100A37E50 /* swordman.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB72449443000A37E50 /* swordman.png */; };
+		A22DDBCC2449443100A37E50 /* sword-smithing.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB82449443000A37E50 /* sword-smithing.png */; };
+		A22DDBCD2449443100A37E50 /* player-base.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBB92449443000A37E50 /* player-base.png */; };
+		A22DDBCE2449443100A37E50 /* tower-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBBA2449443000A37E50 /* tower-flag.png */; };
+		A22DDBCF2449443100A37E50 /* health-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBBB2449443000A37E50 /* health-normal.png */; };
+		A22DDBD02449443100A37E50 /* village.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBBC2449443000A37E50 /* village.png */; };
+		A22DDBD12449443100A37E50 /* workshop.png in Resources */ = {isa = PBXBuildFile; fileRef = A22DDBBD2449443000A37E50 /* workshop.png */; };
 		A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24697F823EE6AF30000D5CA /* AppDelegate.swift */; };
 		A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A24697FC23EE6AF30000D5CA /* Actions.sks */; };
 		A246980123EE6AF30000D5CA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246980023EE6AF30000D5CA /* GameViewController.swift */; };
@@ -38,9 +58,9 @@
 		A2A8C46B24246A470096D831 /* TitleTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C46A24246A470096D831 /* TitleTextNode.swift */; };
 		A2A8C46D24246C200096D831 /* UnitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C46C24246C200096D831 /* UnitNode.swift */; };
 		A2A8C473242507120096D831 /* soldier.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C46E242507120096D831 /* soldier.png */; };
-		A2A8C474242507120096D831 /* catapult.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C46F242507120096D831 /* catapult.png */; };
+		A2A8C474242507120096D831 /* catapult2.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C46F242507120096D831 /* catapult2.png */; };
 		A2A8C475242507120096D831 /* priest.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C470242507120096D831 /* priest.png */; };
-		A2A8C476242507120096D831 /* knight.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C471242507120096D831 /* knight.png */; };
+		A2A8C476242507120096D831 /* knight2.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C471242507120096D831 /* knight2.png */; };
 		A2A8C477242507120096D831 /* tank.png in Resources */ = {isa = PBXBuildFile; fileRef = A2A8C472242507120096D831 /* tank.png */; };
 		A2AB6C80243F5731007AA492 /* catapult-20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AB6C6E243F5730007AA492 /* catapult-20@2x.png */; };
 		A2AB6C81243F5731007AA492 /* catapult-20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2AB6C6F243F5730007AA492 /* catapult-20@3x.png */; };
@@ -93,6 +113,26 @@
 		A2111D0824242C0D00EB6CF3 /* CreditScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditScene.swift; sourceTree = "<group>"; };
 		A2111D0A24242C1B00EB6CF3 /* CreditScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CreditScene.sks; sourceTree = "<group>"; };
 		A22848C324201C7E003AB097 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
+		A22DDBAA2449442E00A37E50 /* white-tower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-tower.png"; sourceTree = "<group>"; };
+		A22DDBAB2449442F00A37E50 /* swordwoman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swordwoman.png; sourceTree = "<group>"; };
+		A22DDBAC2449442F00A37E50 /* catapult_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catapult_icon.png; sourceTree = "<group>"; };
+		A22DDBAD2449442F00A37E50 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
+		A22DDBAE2449442F00A37E50 /* pause-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-button.png"; sourceTree = "<group>"; };
+		A22DDBAF2449442F00A37E50 /* wizard-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wizard-face.png"; sourceTree = "<group>"; };
+		A22DDBB02449442F00A37E50 /* catapult.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catapult.png; sourceTree = "<group>"; };
+		A22DDBB12449442F00A37E50 /* stone-tower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stone-tower.png"; sourceTree = "<group>"; };
+		A22DDBB22449442F00A37E50 /* troops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = troops.png; sourceTree = "<group>"; };
+		A22DDBB32449442F00A37E50 /* black-bridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-bridge.png"; sourceTree = "<group>"; };
+		A22DDBB42449442F00A37E50 /* knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knight.png; sourceTree = "<group>"; };
+		A22DDBB52449443000A37E50 /* wizard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wizard.png; sourceTree = "<group>"; };
+		A22DDBB62449443000A37E50 /* resource.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resource.png; sourceTree = "<group>"; };
+		A22DDBB72449443000A37E50 /* swordman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swordman.png; sourceTree = "<group>"; };
+		A22DDBB82449443000A37E50 /* sword-smithing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sword-smithing.png"; sourceTree = "<group>"; };
+		A22DDBB92449443000A37E50 /* player-base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player-base.png"; sourceTree = "<group>"; };
+		A22DDBBA2449443000A37E50 /* tower-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tower-flag.png"; sourceTree = "<group>"; };
+		A22DDBBB2449443000A37E50 /* health-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "health-normal.png"; sourceTree = "<group>"; };
+		A22DDBBC2449443000A37E50 /* village.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = village.png; sourceTree = "<group>"; };
+		A22DDBBD2449443000A37E50 /* workshop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = workshop.png; sourceTree = "<group>"; };
 		A24697F523EE6AF30000D5CA /* SmallWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmallWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24697F823EE6AF30000D5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A24697FC23EE6AF30000D5CA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -116,9 +156,9 @@
 		A2A8C46A24246A470096D831 /* TitleTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextNode.swift; sourceTree = "<group>"; };
 		A2A8C46C24246C200096D831 /* UnitNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitNode.swift; sourceTree = "<group>"; };
 		A2A8C46E242507120096D831 /* soldier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soldier.png; sourceTree = "<group>"; };
-		A2A8C46F242507120096D831 /* catapult.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catapult.png; sourceTree = "<group>"; };
+		A2A8C46F242507120096D831 /* catapult2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catapult2.png; sourceTree = "<group>"; };
 		A2A8C470242507120096D831 /* priest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = priest.png; sourceTree = "<group>"; };
-		A2A8C471242507120096D831 /* knight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knight.png; sourceTree = "<group>"; };
+		A2A8C471242507120096D831 /* knight2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knight2.png; sourceTree = "<group>"; };
 		A2A8C472242507120096D831 /* tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tank.png; sourceTree = "<group>"; };
 		A2AB6C6E243F5730007AA492 /* catapult-20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catapult-20@2x.png"; sourceTree = "<group>"; };
 		A2AB6C6F243F5730007AA492 /* catapult-20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "catapult-20@3x.png"; sourceTree = "<group>"; };
@@ -283,11 +323,7 @@
 		A2A8C467242468E10096D831 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				A2A8C46F242507120096D831 /* catapult.png */,
-				A2A8C471242507120096D831 /* knight.png */,
-				A2A8C470242507120096D831 /* priest.png */,
-				A2A8C46E242507120096D831 /* soldier.png */,
-				A2A8C472242507120096D831 /* tank.png */,
+				A2AB6C7F243F5731007AA492 /* catapult_appstore.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -296,7 +332,31 @@
 			isa = PBXGroup;
 			children = (
 				A2AB6C6C243F5730007AA492 /* iOS */,
-				A2AB6C7F243F5731007AA492 /* catapult_appstore.jpg */,
+				A22DDBB32449442F00A37E50 /* black-bridge.png */,
+				A22DDBAC2449442F00A37E50 /* catapult_icon.png */,
+				A22DDBB02449442F00A37E50 /* catapult.png */,
+				A2A8C46F242507120096D831 /* catapult2.png */,
+				A22DDBBB2449443000A37E50 /* health-normal.png */,
+				A22DDBB42449442F00A37E50 /* knight.png */,
+				A2A8C471242507120096D831 /* knight2.png */,
+				A22DDBAE2449442F00A37E50 /* pause-button.png */,
+				A22DDBAD2449442F00A37E50 /* play-button.png */,
+				A22DDBB92449443000A37E50 /* player-base.png */,
+				A2A8C470242507120096D831 /* priest.png */,
+				A22DDBB62449443000A37E50 /* resource.png */,
+				A2A8C46E242507120096D831 /* soldier.png */,
+				A22DDBB12449442F00A37E50 /* stone-tower.png */,
+				A22DDBB82449443000A37E50 /* sword-smithing.png */,
+				A22DDBB72449443000A37E50 /* swordman.png */,
+				A22DDBAB2449442F00A37E50 /* swordwoman.png */,
+				A2A8C472242507120096D831 /* tank.png */,
+				A22DDBBA2449443000A37E50 /* tower-flag.png */,
+				A22DDBB22449442F00A37E50 /* troops.png */,
+				A22DDBBC2449443000A37E50 /* village.png */,
+				A22DDBAA2449442E00A37E50 /* white-tower.png */,
+				A22DDBAF2449442F00A37E50 /* wizard-face.png */,
+				A22DDBB52449443000A37E50 /* wizard.png */,
+				A22DDBBD2449443000A37E50 /* workshop.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -436,11 +496,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A22DDBC02449443100A37E50 /* catapult_icon.png in Resources */,
 				A2111CFF2420859000EB6CF3 /* SplashScene.sks in Resources */,
 				A246980423EE6AF30000D5CA /* Main.storyboard in Resources */,
+				A22DDBBF2449443100A37E50 /* swordwoman.png in Resources */,
 				A246980623EE6AF70000D5CA /* Assets.xcassets in Resources */,
 				A22848C424201C7E003AB097 /* MyTileSet.sks in Resources */,
-				A2A8C476242507120096D831 /* knight.png in Resources */,
+				A2A8C476242507120096D831 /* knight2.png in Resources */,
 				A2111D002420859000EB6CF3 /* GameScene.sks in Resources */,
 				A246980923EE6AF70000D5CA /* LaunchScreen.storyboard in Resources */,
 				A2111CFD2420859000EB6CF3 /* MainMenuScene.sks in Resources */,
@@ -448,28 +510,46 @@
 				A2AB6C8C243F5731007AA492 /* catapult-29@3x.png in Resources */,
 				A2AB6C83243F5731007AA492 /* catapult-40.png in Resources */,
 				3C88955E2448ADCE004C1719 /* song.mp3 in Resources */,
+				A22DDBD12449443100A37E50 /* workshop.png in Resources */,
+				A22DDBC82449443100A37E50 /* knight.png in Resources */,
 				A2AB6C8D243F5731007AA492 /* catapult-29@2x.png in Resources */,
 				A2AB6C87243F5731007AA492 /* Contents.json in Resources */,
+				A22DDBCA2449443100A37E50 /* resource.png in Resources */,
+				A22DDBC22449443100A37E50 /* pause-button.png in Resources */,
+				A22DDBCE2449443100A37E50 /* tower-flag.png in Resources */,
 				A2AB6C8A243F5731007AA492 /* catapult-83.5@2x.png in Resources */,
 				A2A8C473242507120096D831 /* soldier.png in Resources */,
 				A2AB6C84243F5731007AA492 /* catapult-20.png in Resources */,
 				A2AB6C85243F5731007AA492 /* catapult-40@3x.png in Resources */,
 				A2AB6C82243F5731007AA492 /* catapult-1024.png in Resources */,
+				A22DDBCC2449443100A37E50 /* sword-smithing.png in Resources */,
 				A2AB6C86243F5731007AA492 /* catapult-29.png in Resources */,
 				A2AB6C8F243F5731007AA492 /* catapult-60@3x.png in Resources */,
-				A2A8C474242507120096D831 /* catapult.png in Resources */,
+				A2A8C474242507120096D831 /* catapult2.png in Resources */,
 				A2AB6C8E243F5731007AA492 /* catapult-76.png in Resources */,
 				A2A8C477242507120096D831 /* tank.png in Resources */,
 				A2A8C475242507120096D831 /* priest.png in Resources */,
+				A22DDBCF2449443100A37E50 /* health-normal.png in Resources */,
+				A22DDBBE2449443100A37E50 /* white-tower.png in Resources */,
 				A2AB6C81243F5731007AA492 /* catapult-20@3x.png in Resources */,
+				A22DDBC72449443100A37E50 /* black-bridge.png in Resources */,
+				A22DDBC92449443100A37E50 /* wizard.png in Resources */,
 				A2AB6C80243F5731007AA492 /* catapult-20@2x.png in Resources */,
+				A22DDBC32449443100A37E50 /* wizard-face.png in Resources */,
 				A2AB6C8B243F5731007AA492 /* catapult-60@2x.png in Resources */,
 				A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */,
 				A2AB6C89243F5731007AA492 /* catapult-76@2x.png in Resources */,
 				3CB3C56724489F17003F3DF6 /* test.mp3 in Resources */,
 				A2AB6C91243F5731007AA492 /* catapult_appstore.jpg in Resources */,
+				A22DDBC52449443100A37E50 /* stone-tower.png in Resources */,
+				A22DDBD02449443100A37E50 /* village.png in Resources */,
+				A22DDBCB2449443100A37E50 /* swordman.png in Resources */,
+				A22DDBC62449443100A37E50 /* troops.png in Resources */,
 				A2AB6C88243F5731007AA492 /* catapult-40@2x.png in Resources */,
+				A22DDBC42449443100A37E50 /* catapult.png in Resources */,
+				A22DDBCD2449443100A37E50 /* player-base.png in Resources */,
 				A2111D0524242BE900EB6CF3 /* OptionScene.sks in Resources */,
+				A22DDBC12449443100A37E50 /* play-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
