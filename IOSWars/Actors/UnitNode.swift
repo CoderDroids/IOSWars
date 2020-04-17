@@ -32,15 +32,15 @@ class UnitNode : SKNode
         switch type
         {
         case UnitType.Fighter:
-            textureName = "soldier.png"
+            textureName = "swordman.png"
         case UnitType.Mage:
-            textureName = "priest.png"
+            textureName = "wizard-face.png"
         case UnitType.Knight:
             textureName = "knight.png"
         case UnitType.Catapult:
-            textureName = "tank.png"
+            textureName = "catapult.png"
         default:
-            textureName = "soldier.png"
+            textureName = "swordman.png"
         }
         let unitTexture = ModelActor( texture : SKTexture( imageNamed: textureName))
         unitTexture.size = CGSize( width : 80, height : 80 )

@@ -14,6 +14,8 @@ class GameScene: SKScene {
     var buildings = [Building]()
     var units = [Unit]()
     var enemies = [Unit]()
+    var popups = [PopupNode]()
+    var currentPopup : PopupNode?
 
     var graphs = [String : GKGraph]()
     var backButton : SKSpriteNode?
@@ -84,6 +86,13 @@ class GameScene: SKScene {
         } */
         else {
             var isProcessed = false
+            if self.currentPopup != nil {
+                if self.currentPopup!.onTouchDown( pos : pos ) {
+                    self.currentPopup = nil
+                    isProcessed = true
+                }
+            }
+            
             let map_pos = self.convert(pos, to: self.tileMap!)
             for building in buildings {
                 if building.contains(map_pos) {
@@ -104,9 +113,13 @@ class GameScene: SKScene {
             if isProcessed == false {
                 for enemy in enemies {
                     if enemy.contains(map_pos) {
-                        enemy.onInteract()
-                        isProcessed = true
-                        break
+                        if self.currentPopup == nil {
+                            //enemy.onInteract()
+                            self.currentPopup = UnitInfoPopup( parent : self, unit : enemy )
+                            //popups.append(unitPopup)
+                            isProcessed = true
+                            break
+                        }
                     }
                 }
             }

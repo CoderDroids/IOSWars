@@ -21,6 +21,7 @@ class Unit : SKSpriteNode
     var baseDamage : Float
     var currentHealth : Float
     var maxHealth : Float
+    var unitType : UnitType
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,6 +33,7 @@ class Unit : SKSpriteNode
         self.baseDamage = 0
         self.currentHealth = 0
         self.maxHealth = 0
+        self.unitType = UnitType.Fighter
         super.init( texture: texture, color: color, size: size )
     }
 
@@ -45,6 +47,7 @@ class Unit : SKSpriteNode
         self.baseDamage = damage
         self.maxHealth = health
         self.currentHealth = self.maxHealth
+        self.unitType = type
     }
     
     class func getUnitImage( type : UnitType ) -> String
