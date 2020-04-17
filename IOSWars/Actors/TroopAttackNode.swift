@@ -14,15 +14,15 @@ class TroopAttackNode : SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    init( parent : SKNode, pos : CGPoint, troopName : String, isAttacker : Bool )
+    init( parent : SKNode, pos : CGPoint, size : CGSize, troop : Unit, isAttacker : Bool )
     {
         super.init()
         
-        let w = UIScreen.main.bounds.width
-        let h = UIScreen.main.bounds.height
+        let w = size.width
+        let h = size.height
         self.position = pos
         
-        let background = SKSpriteNode( color : UIColor.yellow, size : CGSize( width: w, height: h * 0.5 ) )
+        let background = SKSpriteNode( color : UIColor.yellow, size : CGSize( width: w, height: h ) )
         if isAttacker {
             background.color = UIColor.red
         } else {
@@ -30,27 +30,11 @@ class TroopAttackNode : SKNode
         }
         addChild( background )
      
-        let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.35), statName : "Strength", statValue: 10 )
+        let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.35), statName : "Attack", statValue: Int(troop.baseDamage) )
     
         // TODO : make this generic
-        if isAttacker == true {
-            var pos1 : CGPoint = CGPoint( x : -100, y : -50 )
-            let troop1 = UnitNode( parent : background, pos : pos1, type : UnitType.Knight )
-
-            var pos2 : CGPoint = CGPoint( x : 100, y : -50 )
-            let troop2 = UnitNode( parent : background, pos : pos2, type : UnitType.Catapult )
-        
-            var pos3 : CGPoint = CGPoint( x : 0, y : 60 )
-            let troop3 = UnitNode( parent : background, pos : pos3, type : UnitType.Mage )
-        } else {
-            var pos1 : CGPoint = CGPoint( x : -100, y : 50 )
-            let troop1 = UnitNode( parent : background, pos : pos1, type : UnitType.Fighter )
-
-            var pos2 : CGPoint = CGPoint( x : 100, y : 50 )
-            let troop2 = UnitNode( parent : background, pos : pos2, type : UnitType.Catapult )
-        }
-
-        let troopNameNode = TitleTextNode( parent : background, pos : CGPoint( x : 0, y : -background.size.height * 0.4), titleName: troopName )
+        let troopNode = UnitNode( parent : background, pos : CGPoint( x : 0, y : 0 ), type : troop.unitType )
+        let troopNameNode = TitleTextNode( parent : background, pos : CGPoint( x : 0, y : -background.size.height * 0.4), titleName: Unit.getUnitName( type: troop.unitType ) )
         
         parent.addChild( self )
     }

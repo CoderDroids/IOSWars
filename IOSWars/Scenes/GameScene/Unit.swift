@@ -52,21 +52,36 @@ class Unit : SKSpriteNode
     
     class func getUnitImage( type : UnitType ) -> String
     {
-        var textureName : String
         switch type
         {
         case UnitType.Fighter:
-            textureName = "swordman.png"
+            return "swordman.png"
         case UnitType.Mage:
-            textureName = "wizard-face.png"
+            return "wizard-face.png"
         case UnitType.Knight:
-            textureName = "knight.png"
+            return "knight.png"
         case UnitType.Catapult:
-            textureName = "catapult.png"
+            return "catapult.png"
         default:
-            textureName = "swordman.png"
+            return "swordman.png"
         }
-        return textureName
+    }
+    
+    class func getUnitName( type : UnitType ) -> String
+    {
+        switch type
+        {
+        case UnitType.Fighter:
+            return "Fighter"
+        case UnitType.Mage:
+            return "Mage"
+        case UnitType.Knight:
+            return "Knight"
+        case UnitType.Catapult:
+            return "Catapult"
+        default:
+            return "Unit"
+        }
     }
 
     func onInteract()
