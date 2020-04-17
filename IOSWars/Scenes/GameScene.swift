@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     var buildings = [Building]()
-    var units = [SKNode]()
+    var units = [UnitBase]()
 
     var graphs = [String : GKGraph]()
     var backButton : SKSpriteNode?
@@ -49,8 +49,8 @@ class GameScene: SKScene {
         
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
         
-        playerHome = Building( parent: tileMap!, image: "player-base.png", pos : CGPoint( x: -100, y: -200 ), size: CGSize( width: 64, height: 64 ) )
-        enemyHome = Building( parent: tileMap!, image: "tower-flag.png", pos : CGPoint( x: 100, y: 200 ), size: CGSize( width: 64, height: 64 ) )
+        playerHome = Headquarter( parent: tileMap!, image: "player-base.png", pos : CGPoint( x: -100, y: -200 ), size: CGSize( width: 64, height: 64 ) )
+        enemyHome = EnemyBase( parent: tileMap!, image: "tower-flag.png", pos : CGPoint( x: 100, y: 200 ), size: CGSize( width: 64, height: 64 ) )
  
         buildings.append( playerHome! )
         buildings.append( enemyHome! )
@@ -76,13 +76,21 @@ class GameScene: SKScene {
         } */
         else {
             var isProcessed : Bool = false
-            var map_pos = self.convert(pos, to: self.tileMap!)
-            print("pos = ", pos, " map_pos = ", map_pos )
+            let map_pos = self.convert(pos, to: self.tileMap!)
             for building in buildings {
                 if building.contains(map_pos) {
-                    building.onTouch()
+                    building.onInteract()
                     isProcessed = true
                     break
+                }
+            }
+            if isProcessed == false {
+                for unit in units {
+                    if unit.contains(map_pos) {
+                        unit.onInteract()
+                        isProcessed = true
+                        break
+                    }
                 }
             }
             

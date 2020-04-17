@@ -10,7 +10,7 @@ import SpriteKit
 
 class Headquarter : Building
 {
-    override func onTouch()
+    override func onInteract()
     {
         print("PlayerBase touched")
     }

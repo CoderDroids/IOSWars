@@ -10,7 +10,7 @@ import SpriteKit
 
 class EnemyBase : Building
 {
-    override func onTouch()
+    override func onInteract()
     {
         print("EnemyBase touched")
     }

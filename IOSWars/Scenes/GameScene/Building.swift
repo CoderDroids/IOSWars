@@ -26,9 +26,9 @@ class Building : SKSpriteNode
         self.position = pos
     }
     
-    func onTouch()
+    func onInteract()
     {
-        
+        print("building onInteract")
     }
     
     
