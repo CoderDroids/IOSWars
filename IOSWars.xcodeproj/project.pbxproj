@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C88955E2448ADCE004C1719 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C88955D2448ADCE004C1719 /* song.mp3 */; };
 		3C8895602448AFC2004C1719 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C88955F2448AFC2004C1719 /* SplashScene.swift */; };
+		3CB16DE2244A169600B8DE3F /* Pathfinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB16DE1244A169600B8DE3F /* Pathfinding.swift */; };
 		3CB3C56724489F17003F3DF6 /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3CB3C56624489F16003F3DF6 /* test.mp3 */; };
 		3CB3C56A24489F29003F3DF6 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB3C56924489F29003F3DF6 /* Audio.swift */; };
 		A2111CFD2420859000EB6CF3 /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A2111CF82420858F00EB6CF3 /* MainMenuScene.sks */; };
@@ -111,6 +112,7 @@
 /* Begin PBXFileReference section */
 		3C88955D2448ADCE004C1719 /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
 		3C88955F2448AFC2004C1719 /* SplashScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
+		3CB16DE1244A169600B8DE3F /* Pathfinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pathfinding.swift; sourceTree = "<group>"; };
 		3CB3C56624489F16003F3DF6 /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		3CB3C56924489F29003F3DF6 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		A2111CF82420858F00EB6CF3 /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 		3CB3C56824489F29003F3DF6 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				3CB16DE1244A169600B8DE3F /* Pathfinding.swift */,
 				3CB3C56924489F29003F3DF6 /* Audio.swift */,
 			);
 			path = Systems;
@@ -635,6 +638,7 @@
 				A22DDBDB2449470400A37E50 /* Enemy.swift in Sources */,
 				A22DDBDC2449470400A37E50 /* Headquarter.swift in Sources */,
 				3C8895602448AFC2004C1719 /* SplashScene.swift in Sources */,
+				3CB16DE2244A169600B8DE3F /* Pathfinding.swift in Sources */,
 				A2111D0924242C0D00EB6CF3 /* CreditScene.swift in Sources */,
 				A22DDBDA2449470400A37E50 /* GameplayManager.swift in Sources */,
 				A22DDBE42449F77100A37E50 /* UnitInfoPopup.swift in Sources */,

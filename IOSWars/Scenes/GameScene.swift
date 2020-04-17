@@ -67,11 +67,16 @@ class GameScene: SKScene {
         enemies.append(enemy1)
         enemies.append(enemy2)
         
+        Pathfinding.instance.generateGraph(tileMap: &tileMap!)
+        
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
         
+        //var screenSpace = Pathfinding.instance.screenToMap(tap: pos)
+        //var tileSpace = Pathfinding.instance.MapToNode(pos: screenSpace)
+        //print(tileMap?.tileDefinition(atColumn: Int(tileSpace.x), row: Int(tileSpace.y))?.name)
         if backButton!.contains(pos) {
             let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
             let gameScene = SKScene(fileNamed: "MainMenuScene" )!
