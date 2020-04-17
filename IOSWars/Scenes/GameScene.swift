@@ -16,6 +16,7 @@ class GameScene: SKScene {
     var enemies = [Unit]()
     var popups = [PopupNode]()
     var currentPopup : PopupNode?
+    var currentUnit : Unit?
 
     var graphs = [String : GKGraph]()
     var backButton : SKSpriteNode?
@@ -58,6 +59,8 @@ class GameScene: SKScene {
         let unit2 = Unit( parent: tileMap!, type : UnitType.Knight, pos : CGPoint( x : 0, y : 100 ), size : CGSize( width: 64, height: 64 ), damage: 10, health : 100 )
         units.append(unit1)
         units.append(unit2)
+        
+        self.currentUnit = unit1
 
         let enemy1 = EnemyUnit( parent: tileMap!, type : UnitType.Fighter, pos : CGPoint( x : 100, y : 100 ), size : CGSize( width: 64, height: 64 ), damage: 10, health : 100 )
         let enemy2 = EnemyUnit( parent: tileMap!, type : UnitType.Mage, pos : CGPoint( x : 200, y : 100 ), size : CGSize( width: 64, height: 64 ), damage: 10, health : 100 )
@@ -115,7 +118,9 @@ class GameScene: SKScene {
                     if enemy.contains(map_pos) {
                         if self.currentPopup == nil {
                             //enemy.onInteract()
-                            self.currentPopup = UnitInfoPopup( parent : self, unit : enemy )
+                            // just for testing
+                            //self.currentPopup = UnitInfoPopup( parent : self, unit : enemy )
+                            self.currentPopup = AttackPopup( parent : self, size : CGSize( width: 600, height: 600 ), attacker : self.currentUnit!, defender : enemy )
                             //popups.append(unitPopup)
                             isProcessed = true
                             break

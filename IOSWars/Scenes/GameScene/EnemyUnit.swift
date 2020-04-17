@@ -22,5 +22,6 @@ class EnemyUnit : Unit
         self.baseDamage = damage
         self.maxHealth = health
         self.currentHealth = self.maxHealth
+        self.unitType = type
     }
 }

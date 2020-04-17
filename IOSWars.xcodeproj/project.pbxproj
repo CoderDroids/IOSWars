@@ -59,7 +59,7 @@
 		A246980923EE6AF70000D5CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A246980723EE6AF70000D5CA /* LaunchScreen.storyboard */; };
 		A246981423EE6AF80000D5CA /* IOSWarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246981323EE6AF80000D5CA /* IOSWarsTests.swift */; };
 		A246981F23EE6AF80000D5CA /* IOSWarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246981E23EE6AF80000D5CA /* IOSWarsUITests.swift */; };
-		A2A8C45D24244C160096D831 /* AttackScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C45C24244C160096D831 /* AttackScene.swift */; };
+		A2A8C45D24244C160096D831 /* AttackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C45C24244C160096D831 /* AttackPopup.swift */; };
 		A2A8C45F24244C300096D831 /* WorkshopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C45E24244C300096D831 /* WorkshopScene.swift */; };
 		A2A8C46224244F760096D831 /* ModelActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C46124244F760096D831 /* ModelActor.swift */; };
 		A2A8C464242450130096D831 /* UnitPriceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C463242450130096D831 /* UnitPriceNode.swift */; };
@@ -167,7 +167,7 @@
 		A246981A23EE6AF80000D5CA /* IOSWarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSWarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A246981E23EE6AF80000D5CA /* IOSWarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWarsUITests.swift; sourceTree = "<group>"; };
 		A246982023EE6AF80000D5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2A8C45C24244C160096D831 /* AttackScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackScene.swift; sourceTree = "<group>"; };
+		A2A8C45C24244C160096D831 /* AttackPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackPopup.swift; sourceTree = "<group>"; };
 		A2A8C45E24244C300096D831 /* WorkshopScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopScene.swift; sourceTree = "<group>"; };
 		A2A8C46124244F760096D831 /* ModelActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelActor.swift; sourceTree = "<group>"; };
 		A2A8C463242450130096D831 /* UnitPriceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPriceNode.swift; sourceTree = "<group>"; };
@@ -262,6 +262,7 @@
 		A22DDBE22449F71500A37E50 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				A2A8C45C24244C160096D831 /* AttackPopup.swift */,
 				A22DDBE32449F77100A37E50 /* UnitInfoPopup.swift */,
 			);
 			path = Popups;
@@ -336,7 +337,6 @@
 				A22DDBD62449470400A37E50 /* Headquarter.swift */,
 				A22DDBD72449470400A37E50 /* Player.swift */,
 				A22DDBD22449470400A37E50 /* Unit.swift */,
-				A2A8C45C24244C160096D831 /* AttackScene.swift */,
 				A2A8C45E24244C300096D831 /* WorkshopScene.swift */,
 				A22DDBDE2449568100A37E50 /* EnemyBase.swift */,
 				A22DDBE02449DBFA00A37E50 /* EnemyUnit.swift */,
@@ -619,7 +619,7 @@
 				A22DDBE62449FED800A37E50 /* PopupNode.swift in Sources */,
 				A2111CFE2420859000EB6CF3 /* MainMenuScene.swift in Sources */,
 				A2111D0724242BFC00EB6CF3 /* OptionScene.swift in Sources */,
-				A2A8C45D24244C160096D831 /* AttackScene.swift in Sources */,
+				A2A8C45D24244C160096D831 /* AttackPopup.swift in Sources */,
 				A22DDBDF2449568100A37E50 /* EnemyBase.swift in Sources */,
 				A22DDBD82449470400A37E50 /* Unit.swift in Sources */,
 				A2A8C46D24246C200096D831 /* UnitNode.swift in Sources */,
