@@ -1,5 +1,5 @@
 //
-//  Headquarter.swift
+//  EnemyBase.swift
 //  IOSWars
 //
 //  Created by Younggi Kim on 2020-04-16.
@@ -8,10 +8,13 @@
 
 import SpriteKit
 
-class Headquarter : Building
+class EnemyBase : Building
 {
     override func onTouch()
     {
-        print("PlayerBase touched")
+        print("EnemyBase touched")
     }
+    
 }
+
+
