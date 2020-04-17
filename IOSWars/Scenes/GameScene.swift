@@ -12,7 +12,8 @@ import GameplayKit
 class GameScene: SKScene {
     
     var buildings = [Building]()
-    var units = [UnitBase]()
+    var units = [Unit]()
+    var enemies = [Unit]()
 
     var graphs = [String : GKGraph]()
     var backButton : SKSpriteNode?
@@ -28,9 +29,6 @@ class GameScene: SKScene {
     
     var workshopScene : SKNode?
     var attackScene : SKNode?
-    
-    var playerHome : Building?
-    var enemyHome : Building?
     
     let screenSize = UIScreen.main.bounds
     
@@ -49,11 +47,21 @@ class GameScene: SKScene {
         
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
         
-        playerHome = Headquarter( parent: tileMap!, image: "player-base.png", pos : CGPoint( x: -100, y: -200 ), size: CGSize( width: 64, height: 64 ) )
-        enemyHome = EnemyBase( parent: tileMap!, image: "tower-flag.png", pos : CGPoint( x: 100, y: 200 ), size: CGSize( width: 64, height: 64 ) )
- 
-        buildings.append( playerHome! )
-        buildings.append( enemyHome! )
+        let playerHome = Headquarter( parent: tileMap!, image: "player-base.png", pos : CGPoint( x: -100, y: -200 ), size: CGSize( width: 128, height: 128 ) )
+        let enemyHome = EnemyBase( parent: tileMap!, image: "tower-flag.png", pos : CGPoint( x: 100, y: 200 ), size: CGSize( width: 128, height: 128 ) )
+        buildings.append( playerHome )
+        buildings.append( enemyHome )
+
+        let unit1 = Unit( parent: tileMap!, type : UnitType.Fighter, pos : CGPoint( x : 0, y : -100 ), size : CGSize( width: 64, height: 64 ), damage: 10, health : 100 )
+        let unit2 = Unit( parent: tileMap!, type : UnitType.Knight, pos : CGPoint( x : 0, y : 100 ), size : CGSize( width: 64, height: 64 ), damage: 10, health : 100 )
+        units.append(unit1)
+        units.append(unit2)
+
+        let enemy1 = EnemyUnit( parent: tileMap!, type : UnitType.Fighter, pos : CGPoint( x : 100, y : 100 ), size : CGSize( width: 64, height: 64 ), damage: 10, health : 100 )
+        let enemy2 = EnemyUnit( parent: tileMap!, type : UnitType.Mage, pos : CGPoint( x : 200, y : 100 ), size : CGSize( width: 64, height: 64 ), damage: 10, health : 100 )
+        enemies.append(enemy1)
+        enemies.append(enemy2)
+        
     }
     
     
@@ -75,7 +83,7 @@ class GameScene: SKScene {
             }
         } */
         else {
-            var isProcessed : Bool = false
+            var isProcessed = false
             let map_pos = self.convert(pos, to: self.tileMap!)
             for building in buildings {
                 if building.contains(map_pos) {
@@ -88,6 +96,15 @@ class GameScene: SKScene {
                 for unit in units {
                     if unit.contains(map_pos) {
                         unit.onInteract()
+                        isProcessed = true
+                        break
+                    }
+                }
+            }
+            if isProcessed == false {
+                for enemy in enemies {
+                    if enemy.contains(map_pos) {
+                        enemy.onInteract()
                         isProcessed = true
                         break
                     }

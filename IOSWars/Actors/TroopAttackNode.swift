@@ -41,10 +41,10 @@ class TroopAttackNode : SKNode
             let troop2 = UnitNode( parent : background, pos : pos2, type : UnitType.Catapult )
         
             var pos3 : CGPoint = CGPoint( x : 0, y : 60 )
-            let troop3 = UnitNode( parent : background, pos : pos3, type : UnitType.Cleric )
+            let troop3 = UnitNode( parent : background, pos : pos3, type : UnitType.Mage )
         } else {
             var pos1 : CGPoint = CGPoint( x : -100, y : 50 )
-            let troop1 = UnitNode( parent : background, pos : pos1, type : UnitType.Warrior )
+            let troop1 = UnitNode( parent : background, pos : pos1, type : UnitType.Fighter )
 
             var pos2 : CGPoint = CGPoint( x : 100, y : 50 )
             let troop2 = UnitNode( parent : background, pos : pos2, type : UnitType.Catapult )

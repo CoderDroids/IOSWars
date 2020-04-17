@@ -31,9 +31,9 @@ class UnitNode : SKNode
         var textureName : String
         switch type
         {
-        case UnitType.Warrior:
+        case UnitType.Fighter:
             textureName = "soldier.png"
-        case UnitType.Cleric:
+        case UnitType.Mage:
             textureName = "priest.png"
         case UnitType.Knight:
             textureName = "knight.png"

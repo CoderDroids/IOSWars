@@ -9,14 +9,6 @@
 
 import SpriteKit
 
-enum UnitType
-{
-    case Warrior
-    case Knight
-    case Cleric
-    case Catapult
-}
-
 class AttackScene : SKNode
 {
     required init?(coder aDecoder: NSCoder) {
