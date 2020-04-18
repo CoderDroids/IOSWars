@@ -83,6 +83,18 @@ class GameplayManager
         for unit in game!.enemies {
             unit.resetTurn()
         }
+        
+    }
+    
+    func gameEnd( isWon : Bool )
+    {
+        for popup in game!.popups {
+            popup.removeFromParent()
+        }
+        game!.popups.removeAll()
+        
+        let gameEndPopup = GameEndPopup( gameScene : game!, isWon : isWon )
+        game!.popups.append( gameEndPopup )
     }
     
 }

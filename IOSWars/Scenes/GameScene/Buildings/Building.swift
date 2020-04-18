@@ -30,6 +30,7 @@ class Building : SKSpriteNode
     var buildingOwner : Owner
     var address : vector_int2
     var hasActed : Bool
+    var isAttacked : Bool
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -44,6 +45,7 @@ class Building : SKSpriteNode
         self.buildingOwner = owner
         self.address = vector_int2( Int32(pos.x), Int32(pos.y) )
         self.hasActed = false
+        self.isAttacked = false
         
         let imageName = Building.getBuildingImage( type : type, owner : owner )
         let buildingColor = Building.getBuildingColor( owner : owner )
@@ -105,6 +107,11 @@ class Building : SKSpriteNode
     func resetTurn()
     {
         self.hasActed = false
+        
+        if self.isAttacked == false {
+            currentHealth = min( currentHealth + 1, maxHealth )
+        }
+        self.isAttacked = false
     }
     
     
