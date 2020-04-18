@@ -19,7 +19,8 @@ class GameScene: SKScene {
     var currentUnit : Unit?
 
     var graphs = [String : GKGraph]()
-    var backButton : SKSpriteNode?
+    var backButton : SKNode?
+    var turnButton : SKNode?
     //var workshopButton : SKSpriteNode?
     //var attackButton : SKSpriteNode?
     
@@ -43,10 +44,13 @@ class GameScene: SKScene {
         self.lastUpdateTime = 0
         
         // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
+        let w = self.size.width
+        let h = self.size.height
      
-        backButton = self.childNode( withName : "BackButton" ) as! SKSpriteNode
-        //workshopButton = self.childNode( withName : "WorkshopSceneButton" ) as! SKSpriteNode
+        backButton = self.childNode( withName : "BackButton" )
+        turnButton = self.childNode( withName : "TurnButton" )
+        print(turnButton!.position)
+        turnButton!.position = CGPoint( x: w * 0.4, y: -h * 0.4 )
         //attackButton = self.childNode( withName : "AttackSceneButton" ) as! SKSpriteNode
         
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
@@ -83,6 +87,9 @@ class GameScene: SKScene {
             let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
             let gameScene = SKScene(fileNamed: "MainMenuScene" )!
             self.view?.presentScene( gameScene, transition: transition )
+        }
+        else if turnButton!.contains(pos){
+            GameplayManager.instance.takeTurn()
         }
         else {
             var isProcessed = false

@@ -49,7 +49,6 @@ class Unit : SKSpriteNode
         self.unitType = type
         self.movementRange = movement
         self.unitOwner = owner
-        
         self.hasMoved = false
         
         let imageName = Unit.getUnitImage( type : type )
@@ -128,5 +127,10 @@ class Unit : SKSpriteNode
     func onInteract()
     {
         print("unit interact")
+    }
+    
+    func resetTurn()
+    {
+        hasMoved = false
     }
 }
