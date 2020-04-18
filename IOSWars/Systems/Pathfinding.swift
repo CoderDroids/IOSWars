@@ -71,15 +71,21 @@ class Pathfinding
         map = tileMap
     }
     
-    func getPath(startPoint: vector_int2, endPoint: vector_int2)->[CGPoint] // this should use coordinates in map space
+    func getPath(startPoint: vector_int2, endPoint: vector_int2)->[CGPoint]? // this should use coordinates in map space
     {
         
 
         var pathPoints: [CGPoint] = []
 
+        if(startPoint == endPoint)
+        {
+            pathPoints.append(NodeToScreen(grid: startPoint))
+            return pathPoints
+        }
+        
         if (myGraph!.node(atGridPosition: endPoint) == nil)
         {
-            return pathPoints
+            return nil
         }
 
         let tempNode = GKGridGraphNode(gridPosition: startPoint)

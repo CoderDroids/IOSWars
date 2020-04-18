@@ -106,6 +106,8 @@ class GameScene: SKScene {
                 let map_pos = self.convert(pos, to: self.tileMap!)
                 if isProcessed == false && self.popups.count == 0 && self.currentUnit == nil {
                     for unit in units {
+                        
+                        unit.hasMoved = false
                         if unit.contains(map_pos)  && !unit.hasMoved
                         {
                             self.currentUnit = unit
@@ -197,11 +199,13 @@ class GameScene: SKScene {
         let path = Pathfinding.instance.getPath(startPoint: Pathfinding.instance.ScreenToNode(pos: unit.position), endPoint: Pathfinding.instance.tapToNode(tap: pos))
         
         
-        if path.count == 0{return true}
+        if path == nil{return true}
         
-        if path.count <= unit.movementRange
+        print(path?.count)
+        
+        if (path?.count)! <= unit.movementRange
         {
-            unit.position = path.last!
+            unit.position = (path?.last!)!
             unit.hasMoved = true
             Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
             if(Pathfinding.instance.tintEnemyTiles(pos: pos,range: unit.attackRange,color: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 0.3), e: &enemies))
