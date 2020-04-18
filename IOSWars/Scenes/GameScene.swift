@@ -108,7 +108,6 @@ class GameScene: SKScene {
                         {
                             self.currentUnit = unit
                             Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
-                            currentUnit = unit
                             movingUnit = true;
                             isProcessed = true
                             break
@@ -151,9 +150,6 @@ class GameScene: SKScene {
                         backButton?.isHidden = true
                         dragging = true
                     }
-                    
-
-                    Pathfinding.instance.clearTintedTiles()
                 }
             }
         }
@@ -181,9 +177,12 @@ class GameScene: SKScene {
     
     private func moveUnit(pos: CGPoint, unit: inout Unit)
     {
+        
+        movingUnit = false
+        Pathfinding.instance.clearTintedTiles()
+
         let path = Pathfinding.instance.getPath(startPoint: Pathfinding.instance.ScreenToNode(pos: unit.position), endPoint: Pathfinding.instance.tapToNode(tap: pos))
         
-        print(path.count)
         
         if path.count == 0{return}
         
@@ -193,7 +192,6 @@ class GameScene: SKScene {
             unit.hasMoved = true
             Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
         }
-        movingUnit = false
     }
     
     func touchUp(atPoint pos : CGPoint) {
