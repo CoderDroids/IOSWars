@@ -51,22 +51,26 @@ class GameScene: SKScene {
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
         Pathfinding.instance.generateGraph(tileMap: &tileMap!)
         
-        let playerHome = Headquarter( parent: tileMap!, image: "player-base.png", pos : Pathfinding.instance.NodeToScreen( grid: vector_int2( 10, 10 ) ), size: CGSize( width: 128, height: 128 ) )
-        let enemyHome = EnemyBase( parent: tileMap!, image: "tower-flag.png", pos : Pathfinding.instance.NodeToScreen( grid: vector_int2( 20, 20 ) ), size: CGSize( width: 128, height: 128 ) )
+        let playerHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 10, y: 10 ), owner : BuildingOwner.Player )
+        let enemyHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 20, y: 20 ), owner : BuildingOwner.Opponent )
         buildings.append( playerHome )
         buildings.append( enemyHome )
+        let town1 = Town( parent: tileMap!, pos : CGPoint( x: 10, y: 20 ), owner : BuildingOwner.Neutral )
+        let town2 = Town( parent: tileMap!, pos : CGPoint( x: 21, y: 10 ), owner : BuildingOwner.Neutral )
+        buildings.append(town1)
+        buildings.append(town2)
 
-        let unit1 = Fighter( parent: tileMap!, pos : Pathfinding.instance.NodeToScreen( grid: vector_int2( 11, 11 ) ) )
-        let unit2 = Knight( parent: tileMap!, pos : Pathfinding.instance.NodeToScreen( grid: vector_int2( 13, 13 ) ) )
-        let unit3 = Mage( parent: tileMap!, pos : Pathfinding.instance.NodeToScreen( grid: vector_int2( 14, 10 ) ) )
+        let unit1 = Fighter( parent: tileMap!, pos : CGPoint( x: 11, y: 11 ) )
+        let unit2 = Knight( parent: tileMap!, pos : CGPoint( x: 13, y: 13 ) )
+        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 14, y: 10 ) )
         units.append(unit1)
         units.append(unit2)
         units.append(unit3)
         
         self.currentUnit = unit1
 
-        let enemy1 = Fighter( parent: tileMap!, pos : Pathfinding.instance.NodeToScreen( grid: vector_int2( 18, 20 ) ) )
-        let enemy2 = Knight( parent: tileMap!, pos : Pathfinding.instance.NodeToScreen( grid: vector_int2( 17, 18 ) ) )
+        let enemy1 = Fighter( parent: tileMap!, pos : CGPoint( x: 18, y: 20 ) )
+        let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 17, y: 18 ) )
         enemies.append(enemy1)
         enemies.append(enemy2)
     }

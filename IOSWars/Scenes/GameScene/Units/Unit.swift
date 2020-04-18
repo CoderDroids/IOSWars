@@ -43,23 +43,17 @@ class Unit : SKSpriteNode
 
     init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int, cost : Int )
     {
-                self.attack = 0
-                self.currentHealth = 0
-                self.maxHealth = 0
-                self.unitType = UnitType.Fighter
-                self.movementRange = 0
-                self.unitCost = 0
+        self.attack = damage
+        self.currentHealth = health
+        self.maxHealth = health
+        self.unitType = type
+        self.movementRange = movement
+        self.unitCost = cost
         let imageName = Unit.getUnitImage( type : type )
         super.init( texture : SKTexture( imageNamed: imageName ), color : .white, size : CGSize( width : 64, height : 64 ) )
         parent.addChild(self)
         
-        self.position = pos
-        self.attack = damage
-        self.maxHealth = health
-        self.currentHealth = health
-        self.unitType = type
-        self.movementRange = movement
-        self.unitCost = cost
+        self.position = Pathfinding.instance.NodeToScreen( grid: vector_int2( Int32(pos.x), Int32(pos.y) ) )
     }
     
     class func getUnitImage( type : UnitType ) -> String
