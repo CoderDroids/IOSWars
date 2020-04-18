@@ -50,8 +50,8 @@ class Pathfinding
     
     func getPath(from: CGPoint, to: CGPoint)->[CGPoint] // this should use coordinates in map space
     {
-        let startPoint = MapToNode(pos: from)
-        let endPoint = MapToNode(pos: to)
+        let startPoint = ScreenToNode(pos: from)
+        let endPoint = ScreenToNode(pos: to)
         let pathNodes: [GKGridGraphNode] = myGraph!.findPath(from: myGraph!.node(atGridPosition: startPoint)!,to: myGraph!.node(atGridPosition: endPoint)!) as! [GKGridGraphNode]
         var pathPoints: [CGPoint] = []
         for point in pathNodes
@@ -61,7 +61,7 @@ class Pathfinding
         return pathPoints
     }
     
-    private func pathLength(from: vector_int2, to: vector_int2)->Int
+    func pathLength(from: vector_int2, to: vector_int2)->Int
     {
         if (myGraph!.node(atGridPosition: to) == nil || myGraph!.node(atGridPosition: from) == nil)
         {
@@ -76,35 +76,28 @@ class Pathfinding
         return (map?.centerOfTile(atColumn: Int(grid.x), row: Int(grid.y)))!
     }
     
-    func MapToNode(pos:CGPoint)->vector_int2 //converts map to pathfinding nodes
+    private func MapToNode(pos:CGPoint)->vector_int2 //converts map to pathfinding nodes
     {
         let xCord :Int =   Int(Float(pos.x)/(Float((map?.xScale)!) * (Float((map?.tileSize.width)!))))
         let yCord :Int =   Int(Float(pos.y)/(Float((map?.yScale)!) * (Float((map?.tileSize.height)!))))
         return vector_int2(Int32(xCord),Int32(yCord))
     }
-    
-    func screenToMap(tap:CGPoint)->CGPoint //converts screen space aka tap coordinates to map coordinates
+
+    private func screenToMap(tap:CGPoint)->CGPoint //converts screen space aka tap coordinates to map coordinates
     {
         return CGPoint(x:((tap.x - (map?.position.x)!)+abs((map?.mapSize.width)!/(2*(1/(map?.xScale)!))))
             ,y:((tap.y - (map?.position.y)!)+abs((map?.mapSize.height)!/(2*(1/(map?.yScale)!)))))
     }
     
+    func ScreenToNode(pos:CGPoint)->vector_int2
+    {
+        return MapToNode(pos:screenToMap(tap: pos))
+    }
+    
     func tintTiles(pos:CGPoint, range:Int)
     {
         let tileSize = CGSize(width: 0.8 * (map?.tileSize.width)!,height: 0.8 * (map?.tileSize.height)!)
-        let gridPoint = MapToNode(pos:screenToMap(tap: pos))
-        
-        /*for i in 0..<map!.numberOfColumns
-        {
-            for q in 0..<map!.numberOfRows
-            {
-                if myGraph!.node(atGridPosition: vector_int2(Int32(i),Int32(q))) != nil
-                {
-                    tintTile(pos: vector_int2(Int32(i),Int32(q)), size: tileSize)
-                }
-            }
-        }*/
-
+        let gridPoint = ScreenToNode(pos: pos)
         
         for i in -range...range
         {

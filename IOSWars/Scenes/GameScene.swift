@@ -49,7 +49,8 @@ class GameScene: SKScene {
         //attackButton = self.childNode( withName : "AttackSceneButton" ) as! SKSpriteNode
         
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
-        
+        Pathfinding.instance.generateGraph(tileMap: &tileMap!)
+
         let playerHome = Headquarter( parent: tileMap!, image: "player-base.png", pos : CGPoint( x: -100, y: -200 ), size: CGSize( width: 128, height: 128 ) )
         let enemyHome = EnemyBase( parent: tileMap!, image: "tower-flag.png", pos : CGPoint( x: 100, y: 200 ), size: CGSize( width: 128, height: 128 ) )
         buildings.append( playerHome )
@@ -57,7 +58,10 @@ class GameScene: SKScene {
 
         let unit1 = Fighter( parent: tileMap!, pos : CGPoint( x : 0, y : -100 ) )
         let unit2 = Knight( parent: tileMap!, pos : CGPoint( x : 0, y : 0 ) )
-        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x : -100, y : 200 ) )
+        //let unit3 = Mage( parent: tileMap!, pos : CGPoint( x : -100, y : 200 ) )
+        
+        let unit3 = Mage( parent: tileMap!, pos : Pathfinding.instance.NodeToScreen(grid: vector_int2(0,0)))
+
         units.append(unit1)
         units.append(unit2)
         units.append(unit3)
@@ -68,14 +72,13 @@ class GameScene: SKScene {
         let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x : 200, y : 100 ) )
         enemies.append(enemy1)
         enemies.append(enemy2)
-        
-        Pathfinding.instance.generateGraph(tileMap: &tileMap!)
-        
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
         
+        let tile = Pathfinding.instance.ScreenToNode(pos: pos)
+        print(tileMap?.tileDefinition(atColumn: Int(tile.x), row: Int(tile.y))!.name)
         Pathfinding.instance.tintTiles(pos: pos,range: 5)
         
         if backButton!.contains(pos) {
