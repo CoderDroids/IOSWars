@@ -28,6 +28,7 @@ class Building : SKSpriteNode
     var goldGenerate : Int
     var buildingType : BuildingType
     var buildingOwner : Owner
+    var address : vector_int2
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,6 +41,7 @@ class Building : SKSpriteNode
         self.goldGenerate = gold
         self.buildingType = type
         self.buildingOwner = owner
+        self.address = vector_int2( Int32(pos.x), Int32(pos.y) )
         
         let imageName = Building.getBuildingImage( type : type, owner : owner )
         let buildingColor = Building.getBuildingColor( owner : owner )
@@ -47,7 +49,7 @@ class Building : SKSpriteNode
         super.init( texture : SKTexture( imageNamed: imageName ), color : buildingColor, size : CGSize( width : 96, height : 96 ) )
         self.colorBlendFactor = 1.0
         parent.addChild(self)
-        self.position = Pathfinding.instance.NodeToScreen( grid: vector_int2( Int32(pos.x), Int32(pos.y) ) )
+        self.position = Pathfinding.instance.NodeToScreen( grid: self.address )
     }
     
     class func getBuildingColor( owner : Owner ) -> UIColor

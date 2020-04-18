@@ -11,14 +11,18 @@ import SpriteKit
 class UnitPurchasePopup : PopupNode
 {
     var closeButton : SKSpriteNode?
+    var buyButtons : [SKNode] = []
+    var building : Building?
+    let units : [UnitType] = [UnitType.Fighter, UnitType.Knight, UnitType.Mage]
     init( parent : SKNode, building : Building )
     {
+        self.building = building
         super.init()
         
         var width = UIScreen.main.bounds.width
+        var height = CGFloat(330.0)
         
-        
-        let background = SKSpriteNode( color : UIColor( red: 0.7, green : 0.7, blue: 0.7, alpha : 0.9 ), size : CGSize( width: width * 0.9, height: 330 ) )
+        let background = SKSpriteNode( color : UIColor( red: 0.7, green : 0.7, blue: 0.7, alpha : 0.9 ), size : CGSize( width: width * 0.9, height: height ) )
         self.addChild(background)
         
         self.closeButton = SKSpriteNode( color : UIColor.red, size : CGSize( width: 64, height : 64 ) )
@@ -32,9 +36,16 @@ class UnitPurchasePopup : PopupNode
         closeText.fontColor = SKColor.white
         closeButton!.addChild(closeText)
         
-        let unitNode1 = UnitPriceNode( parent : background, pos : CGPoint( x : 0, y : 110 ), size : CGSize( width : width * 0.8, height : 100 ), type : UnitType.Fighter )
-        let unitNode2 = UnitPriceNode( parent : background, pos : CGPoint( x : 0, y : 0 ), size : CGSize( width : width * 0.8, height : 100 ), type : UnitType.Knight )
-        let unitNode3 = UnitPriceNode( parent : background, pos : CGPoint( x : 0, y : -110 ), size : CGSize( width : width * 0.8, height : 100 ), type : UnitType.Mage )
+        if units.count > 0 {
+            var offset = height / CGFloat(units.count)
+            var h = offset
+            for i in 0..<units.count {
+                let unitNode = UnitPriceNode( parent : background, pos : CGPoint( x : 0, y : h ), size : CGSize( width : width * 0.8, height : offset * 0.9 ), type : self.units[i] )
+                let buyButton = unitNode.childNode( withName : "Buy" )!
+                self.buyButtons.append( buyButton )
+                h -= offset
+            }
+        }
 
         parent.addChild(self)
         
@@ -49,6 +60,13 @@ class UnitPurchasePopup : PopupNode
         let popup_pos = self.convert(pos, to: self)
         if self.closeButton!.contains( popup_pos ) {
             return true
+        }
+        for i in 0..<self.buyButtons.count {
+            let button_pos = self.convert( pos, to : self.buyButtons[i].parent! )
+            if self.buyButtons[i].contains( button_pos ) {
+                GameplayManager.instance.buyUnit( type : units[i], address : self.building!.address  )
+                return true
+            }
         }
         return false
     }

@@ -119,11 +119,13 @@ class GameScene: SKScene {
                         }
                     }
                 }
-                for building in buildings {
-                    if building.contains(map_pos) {
-                        building.onInteract()
-                        isProcessed = true
-                        break
+                if isProcessed == false {
+                    for building in buildings {
+                        if building.contains(map_pos) {
+                            building.onInteract()
+                            isProcessed = true
+                            break
+                        }
                     }
                 }
             }

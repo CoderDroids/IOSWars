@@ -45,6 +45,7 @@ class UnitPriceNode : SKNode
         
         self.buyButton = SKSpriteNode( color : UIColor.green, size : CGSize( width: w * 0.2, height : h * 0.7 ) )
         self.buyButton!.position = CGPoint( x : w * 0.4, y: 0 )
+        self.buyButton!.name = "Buy"
         addChild( self.buyButton! )
         
         let buyText = SKLabelNode()
