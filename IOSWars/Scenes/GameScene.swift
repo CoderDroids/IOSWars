@@ -70,7 +70,7 @@ class GameScene: SKScene {
         units.append(unit3)
 
         let enemy1 = Fighter( parent: tileMap!, pos : CGPoint( x: 18, y: 20 ), owner : Owner.Opponent )
-        let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 17, y: 18 ), owner : Owner.Opponent )
+        let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 16, y: 15 ), owner : Owner.Opponent )
         enemies.append(enemy1)
         enemies.append(enemy2)
         
@@ -87,11 +87,6 @@ class GameScene: SKScene {
         }
         else {
             var isProcessed = false
-            if(movingUnit)
-            {
-                moveUnit(pos: pos, unit: &currentUnit!)
-            }
-            
             if self.popups.count > 0 {
                 if self.popups[0].onTouchDown( pos : pos ) {
                     self.popups[0].removeFromParent()
@@ -119,6 +114,7 @@ class GameScene: SKScene {
                         if enemy.contains(map_pos) {
                             if self.currentUnit != nil {
                                 GameplayManager.instance.battle( attacker : self.currentUnit!, defender: enemy )
+                                self.currentUnit = nil
                                 isProcessed = true
                                 break
                             }
@@ -143,17 +139,18 @@ class GameScene: SKScene {
                 if isProcessed == false {
                     if self.currentUnit != nil {
                         // move a unit to this point if the target point is range of unit.movementRange
+                        moveUnit(pos: pos, unit: &self.currentUnit!)
                         self.currentUnit = nil
                     } else {
                         touchDownPoint = pos
                         mapDragStart = tileMap?.position
                         backButton?.isHidden = true
                         dragging = true
+                        self.currentUnit = nil
                     }
                 }
             }
         }
-        //Pathfinding.instance.tintTiles(pos: pos,range: 5)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
