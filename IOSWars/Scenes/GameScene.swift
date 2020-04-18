@@ -106,8 +106,6 @@ class GameScene: SKScene {
                 let map_pos = self.convert(pos, to: self.tileMap!)
                 if isProcessed == false && self.popups.count == 0 && self.currentUnit == nil {
                     for unit in units {
-                        
-                        unit.hasMoved = false
                         if unit.contains(map_pos)  && !unit.hasMoved
                         {
                             self.currentUnit = unit
@@ -200,8 +198,6 @@ class GameScene: SKScene {
         
         
         if path == nil{return true}
-        
-        print(path?.count)
         
         if (path?.count)! <= unit.movementRange
         {
