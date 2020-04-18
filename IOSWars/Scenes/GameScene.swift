@@ -49,7 +49,7 @@ class GameScene: SKScene {
         //attackButton = self.childNode( withName : "AttackSceneButton" ) as! SKSpriteNode
         
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
-        Pathfinding.instance.generateGraph(tileMap: &tileMap!)
+        Pathfinding.instance.loadMap(tileMap: &tileMap!)
         
         let playerHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 10, y: 10 ), owner : Owner.Player )
         let enemyHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 20, y: 20 ), owner : Owner.Opponent )
@@ -73,6 +73,8 @@ class GameScene: SKScene {
         let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 17, y: 18 ), owner : Owner.Opponent )
         enemies.append(enemy1)
         enemies.append(enemy2)
+        
+        Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
     }
     
     
@@ -136,14 +138,16 @@ class GameScene: SKScene {
                     }
                 }
             }
-            
+
             if isProcessed == false {
                 touchDownPoint = pos
                 mapDragStart = tileMap?.position
                 backButton?.isHidden = true
                 dragging = true
+                Pathfinding.instance.clearTintedTiles()
             }
         }
+        //Pathfinding.instance.tintTiles(pos: pos,range: 5)
     }
     
     func touchMoved(toPoint pos : CGPoint) {

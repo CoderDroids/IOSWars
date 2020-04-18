@@ -15,29 +15,29 @@ class Pathfinding
     static let instance = Pathfinding()
     let screenSize = UIScreen.main.bounds
     var myGraph : GKGridGraph<GKGridGraphNode>?
+    
     var map : SKTileMapNode?
     
+
     var drawContext : CIContext?
     
     var tintedNodes: [tintedSquare]
 
     
     private init()
-    {
-        tintedNodes = []
-    }
+    {tintedNodes = []}
     
-    func generateGraph( tileMap: inout SKTileMapNode)
+    func generateGraph(e: inout [Unit],u: inout [Unit],b: inout [Building])
     {
-        map = tileMap
-        myGraph = GKGridGraph(fromGridStartingAt: vector_int2(0,0), width: Int32(tileMap.numberOfColumns), height: Int32(tileMap.numberOfColumns), diagonalsAllowed: false)
+        
+        myGraph = GKGridGraph(fromGridStartingAt: vector_int2(0,0), width: Int32(map!.numberOfColumns), height: Int32(map!.numberOfColumns), diagonalsAllowed: false)
         var obstacles = [GKGridGraphNode]()
 
-        for column in 0..<tileMap.numberOfColumns
+        for column in 0..<map!.numberOfColumns
         {
-            for row in 0..<tileMap.numberOfRows
+            for row in 0..<map!.numberOfRows
             {
-                let tile = tileMap.tileDefinition(atColumn: column, row: row)
+                let tile = map!.tileDefinition(atColumn: column, row: row)
                 if (tile?.name == "Water_Grid_Center")
                 {
                     let pos: vector_int2 = vector_int2(Int32(column),Int32(row))
@@ -45,7 +45,30 @@ class Pathfinding
                 }
             }
         }
+        
+        for building in b
+        {
+            let pos = ScreenToNode(pos: building.position)
+            obstacles.append(myGraph!.node(atGridPosition: pos)!)
+        }
+        
+        for unit in u
+        {
+            let pos = ScreenToNode(pos: unit.position)
+            obstacles.append(myGraph!.node(atGridPosition: pos)!)
+        }
+        for unit in e
+        {
+            let pos = ScreenToNode(pos: unit.position)
+            obstacles.append(myGraph!.node(atGridPosition: pos)!)
+        }
+
         myGraph!.remove(obstacles)
+    }
+    
+    func loadMap(tileMap: inout SKTileMapNode)
+    {
+        map = tileMap
     }
     
     func getPath(from: CGPoint, to: CGPoint)->[CGPoint] // this should use coordinates in map space
@@ -74,10 +97,12 @@ class Pathfinding
     func NodeToScreen(grid:vector_int2)->CGPoint //converts node coordinates to tile map space
     {
         return (map?.centerOfTile(atColumn: Int(grid.x), row: Int(grid.y)))!
+        
     }
     
     private func MapToNode(pos:CGPoint)->vector_int2 //converts map to pathfinding nodes
     {
+        
         let xCord :Int =   Int(Float(pos.x)/(Float((map?.xScale)!) * (Float((map?.tileSize.width)!))))
         let yCord :Int =   Int(Float(pos.y)/(Float((map?.yScale)!) * (Float((map?.tileSize.height)!))))
         return vector_int2(Int32(xCord),Int32(yCord))
@@ -91,13 +116,19 @@ class Pathfinding
     
     func ScreenToNode(pos:CGPoint)->vector_int2
     {
-        return MapToNode(pos:screenToMap(tap: pos))
+        let xVal :Int = (map?.tileColumnIndex(fromPosition: pos))!
+        let yVal :Int = (map?.tileRowIndex(fromPosition: pos))!
+        return vector_int2(Int32(xVal),Int32(yVal))
     }
     
     func tintTiles(pos:CGPoint, range:Int)
     {
         let tileSize = CGSize(width: 0.8 * (map?.tileSize.width)!,height: 0.8 * (map?.tileSize.height)!)
-        let gridPoint = ScreenToNode(pos: pos)
+        let gridPoint = MapToNode(pos:screenToMap(tap: pos))
+        
+        
+       let tempNode = GKGridGraphNode(gridPosition: gridPoint)
+        myGraph?.connectToAdjacentNodes(node: tempNode)
         
         for i in -range...range
         {
@@ -109,6 +140,7 @@ class Pathfinding
                 }
             }
         }
+        myGraph!.remove([tempNode])
         
     }
     
@@ -120,6 +152,7 @@ class Pathfinding
     
     func clearTintedTiles()
     {
+        print("removed tint")
         for node in tintedNodes
         {
             node.removeFromParent()
