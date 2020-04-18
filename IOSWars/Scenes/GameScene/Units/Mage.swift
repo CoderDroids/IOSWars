@@ -14,8 +14,8 @@ class Mage : Unit
          fatalError("init(coder:) has not been implemented")
     }
     
-    init( parent : SKNode, pos : CGPoint )
+    init( parent : SKNode, pos : CGPoint, owner : Owner )
     {
-        super.init( parent : parent,  pos: pos, type : UnitType.Mage, damage : 15, health : 8, movement : 3, cost : 800  )
+        super.init( parent : parent,  pos: pos, type : UnitType.Mage, damage : 15, health : 8, movement : 3, cost : 800, owner : owner  )
     }
 }

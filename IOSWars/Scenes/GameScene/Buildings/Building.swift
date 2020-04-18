@@ -14,7 +14,7 @@ enum BuildingType
     case Town
 }
 
-enum BuildingOwner
+enum Owner
 {
     case Neutral
     case Player
@@ -27,32 +27,48 @@ class Building : SKSpriteNode
     var maxHealth : Float
     var goldGenerate : Int
     var buildingType : BuildingType
-    var owner : BuildingOwner
+    var buildingOwner : Owner
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init( parent : SKNode, pos : CGPoint, type : BuildingType, owner : BuildingOwner, health : Float, gold : Int )
+    init( parent : SKNode, pos : CGPoint, type : BuildingType, owner : Owner, health : Float, gold : Int )
     {
         self.currentHealth = health
         self.maxHealth = health
         self.goldGenerate = gold
         self.buildingType = type
-        self.owner = owner
+        self.buildingOwner = owner
         
         let imageName = Building.getBuildingImage( type : type, owner : owner )
-        super.init( texture : SKTexture( imageNamed: imageName ), color : .white, size : CGSize( width : 96, height : 96 ) )
+        let buildingColor = Building.getBuildingColor( owner : owner )
+
+        super.init( texture : SKTexture( imageNamed: imageName ), color : buildingColor, size : CGSize( width : 96, height : 96 ) )
+        self.colorBlendFactor = 1.0
         parent.addChild(self)
         self.position = Pathfinding.instance.NodeToScreen( grid: vector_int2( Int32(pos.x), Int32(pos.y) ) )
     }
     
-    class func getBuildingImage( type : BuildingType, owner : BuildingOwner ) -> String
+    class func getBuildingColor( owner : Owner ) -> UIColor
+    {
+        switch( owner )
+        {
+        case Owner.Player:
+            return UIColor( red: 0, green: 1, blue: 0, alpha : 1 )
+        case Owner.Opponent:
+            return UIColor.red
+        default:
+            return UIColor.white
+        }
+    }
+    
+    class func getBuildingImage( type : BuildingType, owner : Owner ) -> String
     {
         switch type
         {
         case BuildingType.HeadQuarter:
-            if owner == BuildingOwner.Player {
+            if owner == Owner.Player {
                 return "player-base.png"
             } else {
                 return "tower-flag.png"

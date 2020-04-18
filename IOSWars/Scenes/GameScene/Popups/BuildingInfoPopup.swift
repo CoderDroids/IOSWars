@@ -10,5 +10,19 @@ import SpriteKit
 
 class BuildingInfoPopup : PopupNode
 {
+    init( parent : SKNode, unit : Unit )
+    {
+        super.init()
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func onTouchDown( pos : CGPoint ) -> Bool
+    {
+        var popup_pos = self.convert(pos, to: self)
+        
+        return false
+    }
 }

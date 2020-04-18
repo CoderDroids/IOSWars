@@ -55,11 +55,9 @@ class UnitInfoPopup : PopupNode
     {
         var popup_pos = self.convert(pos, to: self)
         if self.closeButton!.contains( popup_pos ) {
-            self.removeFromParent()
             return true
         }
         else if self.battleButton!.contains( popup_pos ) {
-            self.removeFromParent()
             return true
         }
         return false

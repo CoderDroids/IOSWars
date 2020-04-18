@@ -51,26 +51,26 @@ class GameScene: SKScene {
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
         Pathfinding.instance.generateGraph(tileMap: &tileMap!)
         
-        let playerHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 10, y: 10 ), owner : BuildingOwner.Player )
-        let enemyHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 20, y: 20 ), owner : BuildingOwner.Opponent )
+        let playerHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 10, y: 10 ), owner : Owner.Player )
+        let enemyHome = Headquarter( parent: tileMap!, pos : CGPoint( x: 20, y: 20 ), owner : Owner.Opponent )
         buildings.append( playerHome )
         buildings.append( enemyHome )
-        let town1 = Town( parent: tileMap!, pos : CGPoint( x: 10, y: 20 ), owner : BuildingOwner.Neutral )
-        let town2 = Town( parent: tileMap!, pos : CGPoint( x: 21, y: 10 ), owner : BuildingOwner.Neutral )
+        let town1 = Town( parent: tileMap!, pos : CGPoint( x: 10, y: 20 ), owner : Owner.Neutral )
+        let town2 = Town( parent: tileMap!, pos : CGPoint( x: 21, y: 10 ), owner : Owner.Neutral )
         buildings.append(town1)
         buildings.append(town2)
 
-        let unit1 = Fighter( parent: tileMap!, pos : CGPoint( x: 11, y: 11 ) )
-        let unit2 = Knight( parent: tileMap!, pos : CGPoint( x: 13, y: 13 ) )
-        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 14, y: 10 ) )
+        let unit1 = Fighter( parent: tileMap!, pos : CGPoint( x: 11, y: 11 ), owner : Owner.Player )
+        let unit2 = Knight( parent: tileMap!, pos : CGPoint( x: 13, y: 13 ), owner : Owner.Player )
+        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 14, y: 10 ), owner : Owner.Player )
         units.append(unit1)
         units.append(unit2)
         units.append(unit3)
         
         self.currentUnit = unit1
 
-        let enemy1 = Fighter( parent: tileMap!, pos : CGPoint( x: 18, y: 20 ) )
-        let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 17, y: 18 ) )
+        let enemy1 = Fighter( parent: tileMap!, pos : CGPoint( x: 18, y: 20 ), owner : Owner.Opponent )
+        let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 17, y: 18 ), owner : Owner.Opponent )
         enemies.append(enemy1)
         enemies.append(enemy2)
     }
@@ -82,61 +82,57 @@ class GameScene: SKScene {
             let gameScene = SKScene(fileNamed: "MainMenuScene" )!
             self.view?.presentScene( gameScene, transition: transition )
         }
-        /*
-        else if (workshopButton?.contains( pos ))! {
-            if workshopScene == nil {
-                workshopScene = WorkshopScene( parent : self )
-            }
-        } else if (attackButton?.contains( pos ))! {
-            if attackScene == nil {
-                attackScene = AttackScene( parent : self )
-            }
-        } */
         else {
             var isProcessed = false
-            if self.currentPopup != nil {
-                if self.currentPopup!.onTouchDown( pos : pos ) {
-                    self.currentPopup = nil
-                    isProcessed = true
-                }
-            }
             
-            let map_pos = self.convert(pos, to: self.tileMap!)
-            for building in buildings {
-                if building.contains(map_pos) {
-                    building.onInteract()
+            if self.popups.count > 0 {
+                if self.popups[0].onTouchDown( pos : pos ) {
+                    self.popups[0].removeFromParent()
+                    self.popups.removeFirst()
                     isProcessed = true
-                    break
                 }
             }
-            if isProcessed == false {
-                for unit in units {
-                    if unit.contains(map_pos) {
-                        //unit.onInteract()
-                        if self.currentPopup == nil {
-                            Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
-                            //self.currentPopup = UnitInfoPopup( parent : self, unit : unit )
-                            //popups.append(unitPopup)
+            else
+            {
+                let map_pos = self.convert(pos, to: self.tileMap!)
+                if isProcessed == false {
+                    for unit in units {
+                        if unit.contains(map_pos) {
+                            //unit.onInteract()
+                            if self.currentPopup == nil {
+                                Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
+                                //self.currentPopup = UnitInfoPopup( parent : self, unit : unit )
+                                //popups.append(unitPopup)
+                                isProcessed = true
+                                break
+                            }
                             isProcessed = true
                             break
                         }
-                        isProcessed = true
-                        break
                     }
                 }
-            }
-            if isProcessed == false {
-                for enemy in enemies {
-                    if enemy.contains(map_pos) {
-                        if self.currentPopup == nil {
-                            //enemy.onInteract()
-                            // just for testing
-                            //self.currentPopup = UnitInfoPopup( parent : self, unit : enemy )
-                            self.currentPopup = AttackPopup( parent : self, size : CGSize( width: 600, height: 600 ), attacker : self.currentUnit!, defender : enemy )
-                            //popups.append(unitPopup)
-                            isProcessed = true
-                            break
+                if isProcessed == false {
+                    for enemy in enemies {
+                        if enemy.contains(map_pos) {
+                            if self.currentPopup == nil {
+                                //enemy.onInteract()
+                                // just for testing
+                                //self.currentPopup = UnitInfoPopup( parent : self, unit : enemy )
+                                let attackPopup = AttackPopup( parent : self, size : CGSize( width: 600, height: 600 ), attacker : self.currentUnit!, defender : enemy )
+                                popups.append(attackPopup)
+                                isProcessed = true
+                                break
+                            }
                         }
+                    }
+                }
+                
+                
+                for building in buildings {
+                    if building.contains(map_pos) {
+                        building.onInteract()
+                        isProcessed = true
+                        break
                     }
                 }
             }
@@ -146,16 +142,6 @@ class GameScene: SKScene {
                 mapDragStart = tileMap?.position
                 backButton?.isHidden = true
                 dragging = true
-                
-
-                if workshopScene != nil {
-                    workshopScene?.removeFromParent()
-                    workshopScene = nil
-                }
-                if attackScene != nil {
-                    attackScene?.removeFromParent()
-                    attackScene = nil
-                }
             }
         }
     }
@@ -165,9 +151,6 @@ class GameScene: SKScene {
         {
             tileMap?.position = CGPoint(x: mapDragStart!.x-(touchDownPoint!.x-pos.x),
                                     y:mapDragStart!.y-(touchDownPoint!.y-pos.y))
-            
-
-            
         
             //protects against dragging off map in x axis
             if(abs((tileMap?.position.x)!) > abs((tileMap?.mapSize.width)!/(2*(1/(tileMap?.xScale)!))-(screenSize.width/2)))
@@ -185,7 +168,7 @@ class GameScene: SKScene {
     func touchUp(atPoint pos : CGPoint) {
         backButton?.isHidden = false
         dragging = false
-        Pathfinding.instance.clearTintedTiles()
+        //Pathfinding.instance.clearTintedTiles()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

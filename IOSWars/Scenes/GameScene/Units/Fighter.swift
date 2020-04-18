@@ -15,8 +15,8 @@ class Fighter : Unit
          fatalError("init(coder:) has not been implemented")
     }
     
-    init( parent : SKNode, pos : CGPoint )
+    init( parent : SKNode, pos : CGPoint, owner : Owner )
     {
-        super.init( parent : parent,  pos: pos, type : UnitType.Fighter, damage : 4, health : 10, movement : 4, cost : 200  )
+        super.init( parent : parent,  pos: pos, type : UnitType.Fighter, damage : 4, health : 10, movement : 4, cost : 200, owner : owner  )
     }
 }

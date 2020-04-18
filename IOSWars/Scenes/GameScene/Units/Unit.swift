@@ -24,7 +24,7 @@ class Unit : SKSpriteNode
     var unitType : UnitType
     var movementRange : Int
     var unitCost : Int
-    
+    var unitOwner : Owner
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,8 +40,8 @@ class Unit : SKSpriteNode
 //        self.unitCost = 0
 //        super.init( texture: texture, color: color, size: size )
 //    }
-
-    init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int, cost : Int )
+//
+    init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int, cost : Int, owner : Owner )
     {
         self.attack = damage
         self.currentHealth = health
@@ -49,11 +49,28 @@ class Unit : SKSpriteNode
         self.unitType = type
         self.movementRange = movement
         self.unitCost = cost
+        self.unitOwner = owner
+        
         let imageName = Unit.getUnitImage( type : type )
-        super.init( texture : SKTexture( imageNamed: imageName ), color : .white, size : CGSize( width : 64, height : 64 ) )
+        let unitColor = Unit.getUnitColor( owner : owner )
+        super.init( texture : SKTexture( imageNamed: imageName ), color : unitColor, size : CGSize( width : 64, height : 64 ) )
+        self.colorBlendFactor = 1.0
         parent.addChild(self)
         
         self.position = Pathfinding.instance.NodeToScreen( grid: vector_int2( Int32(pos.x), Int32(pos.y) ) )
+    }
+    
+    class func getUnitColor( owner : Owner ) -> UIColor
+    {
+        switch( owner )
+        {
+        case Owner.Player:
+            return UIColor( red: 0, green: 1, blue: 0, alpha : 1 )
+        case Owner.Opponent:
+            return UIColor.red
+        default:
+            return UIColor.white
+        }
     }
     
     class func getUnitImage( type : UnitType ) -> String

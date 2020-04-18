@@ -10,7 +10,7 @@ import SpriteKit
 
 class Headquarter : Building
 {
-    init( parent : SKNode, pos : CGPoint, owner : BuildingOwner )
+    init( parent : SKNode, pos : CGPoint, owner : Owner )
     {
         super.init( parent : parent,  pos: pos, type : BuildingType.HeadQuarter, owner : owner, health : 10, gold : 100 )
     }

@@ -10,5 +10,16 @@ import Foundation
 
 class GameplayManager
 {
+    static let instance = GameplayManager()
+    var game : GameScene?
+    
+    func battle( attacker : Unit, defender: Unit )
+    {
+        
+    }
+    
+    func BuyUnit( unit : Unit )
+    {
+    }
     
 }

@@ -26,8 +26,8 @@ class Knight : Unit
 //        self.unitCost = 400
 //    }
     
-    init( parent : SKNode, pos : CGPoint )
+    init( parent : SKNode, pos : CGPoint, owner : Owner )
     {
-        super.init( parent : parent,  pos: pos, type : UnitType.Knight, damage : 7, health : 18, movement : 6, cost : 400  )
+        super.init( parent : parent,  pos: pos, type : UnitType.Knight, damage : 7, health : 18, movement : 6, cost : 400, owner : owner  )
     }
 }
