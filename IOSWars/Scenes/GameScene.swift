@@ -68,7 +68,7 @@ class GameScene: SKScene {
 
         let unit1 = Fighter( parent: tileMap!, pos : CGPoint( x: 11, y: 11 ), owner : Owner.Player )
         let unit2 = Knight( parent: tileMap!, pos : CGPoint( x: 13, y: 13 ), owner : Owner.Player )
-        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 16, y: 14 ), owner : Owner.Player )
+        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 16, y: 12 ), owner : Owner.Player )
         units.append(unit1)
         units.append(unit2)
         units.append(unit3)
@@ -119,8 +119,11 @@ class GameScene: SKScene {
 
                     for enemy in enemies {
                         if enemy.contains(map_pos) {
-                            if self.currentUnit != nil && attackingUnit && Pathfinding.instance.unitDistnce(u1: (currentUnit?.position)!, u2: enemy.position) <= (currentUnit?.attackRange)! {
-                                GameplayManager.instance.battle( attacker : self.currentUnit!, defender: enemy )
+                            if self.currentUnit != nil && attackingUnit {
+                                if(Pathfinding.instance.unitDistnce(u1: (currentUnit?.position)!, u2: enemy.position) <= (currentUnit?.attackRange)!)
+                                {
+                                    GameplayManager.instance.battle( attacker : self.currentUnit!, defender: enemy )
+                                }
                                 attackingUnit = false
                                 Pathfinding.instance.clearTintedTiles()
                                 self.currentUnit = nil
@@ -128,6 +131,8 @@ class GameScene: SKScene {
                                 break
                             }
                             else {
+                                attackingUnit = false
+                                self.currentUnit = nil
                                 GameplayManager.instance.showUnitInfo( unit : enemy )
                                 isProcessed = true
                                 break
