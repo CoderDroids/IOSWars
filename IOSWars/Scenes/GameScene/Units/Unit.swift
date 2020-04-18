@@ -24,6 +24,7 @@ class Unit : SKSpriteNode
     var unitType : UnitType
     var movementRange : Int
     var unitOwner : Owner
+    var hasMoved : Bool
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -48,6 +49,8 @@ class Unit : SKSpriteNode
         self.unitType = type
         self.movementRange = movement
         self.unitOwner = owner
+        
+        self.hasMoved = false
         
         let imageName = Unit.getUnitImage( type : type )
         let unitColor = Unit.getUnitColor( owner : owner )

@@ -71,16 +71,21 @@ class Pathfinding
         map = tileMap
     }
     
-    func getPath(from: CGPoint, to: CGPoint)->[CGPoint] // this should use coordinates in map space
+    func getPath(startPoint: vector_int2, endPoint: vector_int2)->[CGPoint] // this should use coordinates in map space
     {
-        let startPoint = ScreenToNode(pos: from)
-        let endPoint = ScreenToNode(pos: to)
         
+
+        var pathPoints: [CGPoint] = []
+
+        if (myGraph!.node(atGridPosition: endPoint) == nil)
+        {
+            return pathPoints
+        }
+
         let tempNode = GKGridGraphNode(gridPosition: startPoint)
         myGraph?.connectToAdjacentNodes(node: tempNode)
 
         let pathNodes: [GKGridGraphNode] = myGraph!.findPath(from: myGraph!.node(atGridPosition: startPoint)!,to: myGraph!.node(atGridPosition: endPoint)!) as! [GKGridGraphNode]
-        var pathPoints: [CGPoint] = []
         for point in pathNodes
         {
             pathPoints.append(NodeToScreen(grid: point.gridPosition))
@@ -120,6 +125,11 @@ class Pathfinding
             ,y:((tap.y - (map?.position.y)!)+abs((map?.mapSize.height)!/(2*(1/(map?.yScale)!)))))
     }
     
+    func tapToNode(tap:CGPoint)->vector_int2
+    {
+        return MapToNode(pos: screenToMap(tap: tap))
+    }
+    
     func ScreenToNode(pos:CGPoint)->vector_int2
     {
         let xVal :Int = (map?.tileColumnIndex(fromPosition: pos))!
@@ -157,7 +167,6 @@ class Pathfinding
     
     func clearTintedTiles()
     {
-        print("removed tint")
         for node in tintedNodes
         {
             node.removeFromParent()

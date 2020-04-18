@@ -26,6 +26,7 @@ class GameScene: SKScene {
     var touchDownPoint: CGPoint?
     var mapDragStart: CGPoint?
     var dragging : Bool = false
+    var movingUnit : Bool = false
     
     var tileMap : SKTileMapNode?
 
@@ -34,6 +35,7 @@ class GameScene: SKScene {
     var attackScene : SKNode?
     
     let screenSize = UIScreen.main.bounds
+    
     
     private var lastUpdateTime : TimeInterval = 0
     
@@ -87,6 +89,10 @@ class GameScene: SKScene {
         }
         else {
             var isProcessed = false
+            if(movingUnit)
+            {
+                moveUnit(pos: pos, unit: &currentUnit!)
+            }
             
             if self.popups.count > 0 {
                 if self.popups[0].onTouchDown( pos : pos ) {
@@ -100,8 +106,11 @@ class GameScene: SKScene {
                 let map_pos = self.convert(pos, to: self.tileMap!)
                 if isProcessed == false && self.popups.count == 0 {
                     for unit in units {
-                        if unit.contains(map_pos) {
+                        if unit.contains(map_pos)  && !unit.hasMoved
+                        {
                             Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
+                            currentUnit = unit
+                            movingUnit = true;
                             isProcessed = true
                             break
                         }
@@ -158,6 +167,23 @@ class GameScene: SKScene {
                 tileMap?.position = CGPoint(x:(tileMap?.position.x)! ,y:  ((tileMap?.position.y)! < 0 ? -1 : 1) * abs((tileMap?.mapSize.height)!/(2*(1/(tileMap?.yScale)!))-(screenSize.height/2)))
             }
         }
+    }
+    
+    private func moveUnit(pos: CGPoint, unit: inout Unit)
+    {
+        let path = Pathfinding.instance.getPath(startPoint: Pathfinding.instance.ScreenToNode(pos: unit.position), endPoint: Pathfinding.instance.tapToNode(tap: pos))
+        
+        print(path.count)
+        
+        if path.count == 0{return}
+        
+        if path.count <= unit.movementRange
+        {
+            unit.position = path.last!
+            unit.hasMoved = true
+            Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
+        }
+        movingUnit = false
     }
     
     func touchUp(atPoint pos : CGPoint) {
