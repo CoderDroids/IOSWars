@@ -37,7 +37,8 @@ class GameplayManager
     func buyUnit( type : UnitType, address : vector_int2 ) -> Bool
     {
         let unitCost = Unit.getUnitCost(type: type )
-        if playerGold >= unitCost {
+        if self.playerGold >= unitCost {
+            self.playerGold -= unitCost
             var pos = CGPoint( x: CGFloat(address.x), y: CGFloat(address.y) )
             var unit : Unit
             switch( type )

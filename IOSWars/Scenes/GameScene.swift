@@ -21,8 +21,7 @@ class GameScene: SKScene {
     var graphs = [String : GKGraph]()
     var backButton : SKNode?
     var turnButton : SKNode?
-    //var workshopButton : SKSpriteNode?
-    //var attackButton : SKSpriteNode?
+    var goldText : SKLabelNode?
     
     var touchDownPoint: CGPoint?
     var mapDragStart: CGPoint?
@@ -50,8 +49,9 @@ class GameScene: SKScene {
      
         backButton = self.childNode( withName : "BackButton" )
         turnButton = self.childNode( withName : "TurnButton" )
-        print(turnButton!.position)
         turnButton!.position = CGPoint( x: w * 0.4, y: -h * 0.4 )
+        goldText = self.childNode( withName : "Gold" ) as! SKLabelNode
+        goldText!.position = CGPoint( x: w * 0.25, y: h * 0.4 )
         //attackButton = self.childNode( withName : "AttackSceneButton" ) as! SKSpriteNode
         
         tileMap = self.childNode( withName : "Tile Map Node" ) as! SKTileMapNode
@@ -236,6 +236,8 @@ class GameScene: SKScene {
         for unit in self.units {
             //unit.update(deltaTime: dt)
         }
+        
+        goldText!.text = "Gold: \(GameplayManager.instance.playerGold)"
         
         self.lastUpdateTime = currentTime
     }
