@@ -26,7 +26,6 @@ class GameScene: SKScene {
     var touchDownPoint: CGPoint?
     var mapDragStart: CGPoint?
     var dragging : Bool = false
-    var movingUnit : Bool = false
     
     var tileMap : SKTileMapNode?
 
@@ -87,11 +86,6 @@ class GameScene: SKScene {
         }
         else {
             var isProcessed = false
-            if(movingUnit)
-            {
-                moveUnit(pos: pos, unit: &currentUnit!)
-            }
-            
             if self.popups.count > 0 {
                 if self.popups[0].onTouchDown( pos : pos ) {
                     self.popups[0].removeFromParent()
@@ -109,7 +103,6 @@ class GameScene: SKScene {
                             self.currentUnit = unit
                             Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
                             currentUnit = unit
-                            movingUnit = true;
                             isProcessed = true
                             break
                         }
@@ -145,6 +138,7 @@ class GameScene: SKScene {
                 if isProcessed == false {
                     if self.currentUnit != nil {
                         // move a unit to this point if the target point is range of unit.movementRange
+                        moveUnit(pos: pos, unit: &self.currentUnit!)
                         self.currentUnit = nil
                     } else {
                         touchDownPoint = pos
@@ -196,7 +190,6 @@ class GameScene: SKScene {
             unit.hasMoved = true
             Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
         }
-        movingUnit = false
     }
     
     func touchUp(atPoint pos : CGPoint) {
