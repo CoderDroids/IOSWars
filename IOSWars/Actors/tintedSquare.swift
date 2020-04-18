@@ -18,10 +18,12 @@ class tintedSquare : SKNode
     {
         super.init()
         self.position = pos
-        let background = SKSpriteNode( color : UIColor.gray, size : size )
+        let background = SKSpriteNode()
         addChild(background)
         parent.addChild( self )
         let unitTexture = ModelActor( texture : SKTexture( imageNamed: "greenTint.png"))
+        //unitTexture.blendMode = .alpha
+
         unitTexture.size = size
         background.addChild(unitTexture)
     }
