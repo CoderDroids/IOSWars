@@ -75,12 +75,18 @@ class Pathfinding
     {
         let startPoint = ScreenToNode(pos: from)
         let endPoint = ScreenToNode(pos: to)
+        
+        let tempNode = GKGridGraphNode(gridPosition: startPoint)
+        myGraph?.connectToAdjacentNodes(node: tempNode)
+
         let pathNodes: [GKGridGraphNode] = myGraph!.findPath(from: myGraph!.node(atGridPosition: startPoint)!,to: myGraph!.node(atGridPosition: endPoint)!) as! [GKGridGraphNode]
         var pathPoints: [CGPoint] = []
         for point in pathNodes
         {
             pathPoints.append(NodeToScreen(grid: point.gridPosition))
         }
+        
+        myGraph!.remove([tempNode])
         return pathPoints
     }
     
@@ -141,7 +147,6 @@ class Pathfinding
             }
         }
         myGraph!.remove([tempNode])
-        
     }
     
     private func tintTile(pos: vector_int2, size :CGSize)
