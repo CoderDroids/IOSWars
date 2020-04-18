@@ -21,7 +21,7 @@ class Headquarter : Building
     
     override func onInteract()
     {
-        if self.buildingOwner == Owner.Player {
+        if self.buildingOwner == Owner.Player && self.hasActed == false {
             GameplayManager.instance.showUnitPurchasePopup( building : self )
         }
     }

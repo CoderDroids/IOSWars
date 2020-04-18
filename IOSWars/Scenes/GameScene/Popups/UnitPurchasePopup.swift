@@ -64,8 +64,12 @@ class UnitPurchasePopup : PopupNode
         for i in 0..<self.buyButtons.count {
             let button_pos = self.convert( pos, to : self.buyButtons[i].parent! )
             if self.buyButtons[i].contains( button_pos ) {
-                GameplayManager.instance.buyUnit( type : units[i], address : self.building!.address  )
-                return true
+                var purchased = GameplayManager.instance.buyUnit( type : units[i], address : self.building!.address )
+                if purchased {
+                    self.building!.hasActed = true
+                    return true
+                }
+                return false
             }
         }
         return false
