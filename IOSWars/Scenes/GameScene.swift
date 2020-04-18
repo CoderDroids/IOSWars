@@ -75,6 +75,7 @@ class GameScene: SKScene {
         enemies.append(enemy2)
         
         Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
+        GameplayManager.instance.game = self
     }
     
     
@@ -97,17 +98,10 @@ class GameScene: SKScene {
             else
             {
                 let map_pos = self.convert(pos, to: self.tileMap!)
-                if isProcessed == false {
+                if isProcessed == false && self.popups.count == 0 {
                     for unit in units {
                         if unit.contains(map_pos) {
-                            //unit.onInteract()
-                            if self.currentPopup == nil {
-                                Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
-                                //self.currentPopup = UnitInfoPopup( parent : self, unit : unit )
-                                //popups.append(unitPopup)
-                                isProcessed = true
-                                break
-                            }
+                            Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
                             isProcessed = true
                             break
                         }
@@ -117,9 +111,6 @@ class GameScene: SKScene {
                     for enemy in enemies {
                         if enemy.contains(map_pos) {
                             if self.currentPopup == nil {
-                                //enemy.onInteract()
-                                // just for testing
-                                //self.currentPopup = UnitInfoPopup( parent : self, unit : enemy )
                                 let attackPopup = AttackPopup( parent : self, size : CGSize( width: 600, height: 600 ), attacker : self.currentUnit!, defender : enemy )
                                 popups.append(attackPopup)
                                 isProcessed = true
@@ -128,8 +119,6 @@ class GameScene: SKScene {
                         }
                     }
                 }
-                
-                
                 for building in buildings {
                     if building.contains(map_pos) {
                         building.onInteract()

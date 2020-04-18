@@ -14,36 +14,21 @@ class UnitNode : SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    init( parent : SKNode, pos : CGPoint, type : UnitType )
+    init( parent : SKNode, pos : CGPoint, size : CGSize, type : UnitType )
     {
         super.init()
         
-        
-        let w = UIScreen.main.bounds.width
-        let h = UIScreen.main.bounds.height
         self.position = pos
-
-        let background = SKSpriteNode( color : UIColor.gray, size : CGSize( width: 100, height: 100 ) )
+        let background = SKSpriteNode( color : UIColor.gray, size : size )
         addChild(background)
 
         parent.addChild( self )
         
-        var textureName : String
-        switch type
-        {
-        case UnitType.Fighter:
-            textureName = "swordman.png"
-        case UnitType.Mage:
-            textureName = "wizard-face.png"
-        case UnitType.Knight:
-            textureName = "knight.png"
-        case UnitType.Catapult:
-            textureName = "catapult.png"
-        default:
-            textureName = "swordman.png"
-        }
-        let unitTexture = ModelActor( texture : SKTexture( imageNamed: textureName))
-        unitTexture.size = CGSize( width : 80, height : 80 )
+
+        let unitTexture = ModelActor( texture : SKTexture( imageNamed: Unit.getUnitImage(type : type )))
+        unitTexture.color = UIColor.green
+        unitTexture.colorBlendFactor = 1.0
+        unitTexture.size = CGSize( width : size.width * 0.9, height : size.height * 0.9 )
         background.addChild(unitTexture)
 
     }

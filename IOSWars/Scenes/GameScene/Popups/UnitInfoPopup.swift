@@ -42,7 +42,7 @@ class UnitInfoPopup : PopupNode
         battleText.fontColor = SKColor.white
         self.battleButton!.addChild(battleText)
         
-        let unitNode = UnitNode( parent : background, pos : CGPoint( x : 0, y : 0 ), type : unit.unitType )
+        let unitNode = UnitNode( parent : background, pos : CGPoint( x : 0, y : 0 ), size : CGSize( width: 100, height: 100 ), type : unit.unitType )
         
         parent.addChild(self)
     }
