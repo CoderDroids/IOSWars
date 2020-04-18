@@ -14,15 +14,16 @@ class tintedSquare : SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    init( parent : SKNode, pos : CGPoint, size : CGSize)
+    init( parent : SKNode, pos : CGPoint, size : CGSize, color: UIColor)
     {
         super.init()
         self.position = pos
-        let background = SKSpriteNode()
+        let background = SKSpriteNode(color: color, size: size)
+
         addChild(background)
         parent.addChild( self )
-        let unitTexture = ModelActor( texture : SKTexture( imageNamed: "greenTint.png"))
-        //unitTexture.blendMode = .alpha
+        let unitTexture = ModelActor( texture : SKTexture( imageNamed: "tint.png"))
+        unitTexture.blendMode = .alpha
 
         unitTexture.size = size
         background.addChild(unitTexture)

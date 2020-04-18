@@ -137,7 +137,7 @@ class Pathfinding
         return vector_int2(Int32(xVal),Int32(yVal))
     }
     
-    func tintTiles(pos:CGPoint, range:Int)
+    func tintTiles(pos:CGPoint, range:Int, color :UIColor)
     {
         let tileSize = CGSize(width: 0.8 * (map?.tileSize.width)!,height: 0.8 * (map?.tileSize.height)!)
         let gridPoint = MapToNode(pos:screenToMap(tap: pos))
@@ -152,17 +152,47 @@ class Pathfinding
             {
                 if (pathLength(from: gridPoint, to: vector_int2(gridPoint.x + Int32(i),gridPoint.y+Int32(q))) <= range)
                 {
-                    tintTile(pos: vector_int2(gridPoint.x + Int32(i),gridPoint.y+Int32(q)), size: tileSize)
+                    tintTile(pos: vector_int2(gridPoint.x + Int32(i),gridPoint.y+Int32(q)), size: tileSize, color: color)
                 }
             }
         }
         myGraph!.remove([tempNode])
     }
     
-    private func tintTile(pos: vector_int2, size :CGSize)
+    func tintEnemyTiles(pos:CGPoint, range:Int, color :UIColor, e:inout[Unit])->Bool
+    {
+        var didFindEnemy = false
+        let tileSize = CGSize(width: 0.8 * (map?.tileSize.width)!,height: 0.8 * (map?.tileSize.height)!)
+        let gridPoint = MapToNode(pos:screenToMap(tap: pos))
+
+        for enemy in e
+        {
+            let enemyPoint = ScreenToNode(pos: enemy.position)
+            if (distance(p1: gridPoint, p2: enemyPoint) <= range)
+            {
+                didFindEnemy = true
+                tintTile(pos: enemyPoint, size: tileSize, color: color)
+            }
+        }
+        return didFindEnemy
+    }
+    
+    private func distance(p1: vector_int2,p2: vector_int2)->Int //does not take collisions into account
+    {
+        return Int(abs(Int(p1.x) - Int(p2.x)) + abs(Int(p1.y) - Int(p2.y)))
+    }
+    
+    func unitDistnce(u1: CGPoint, u2: CGPoint)->Int
+    {
+        let unit1 = ScreenToNode(pos: u1)
+        let unit2 = ScreenToNode(pos: u2)
+        return distance(p1: unit1, p2: unit2)
+    }
+    
+    private func tintTile(pos: vector_int2, size :CGSize, color :UIColor)
     {
         let loc = NodeToScreen(grid: pos)
-        tintedNodes.append(tintedSquare( parent: map!, pos : loc, size: size))
+        tintedNodes.append(tintedSquare( parent: map!, pos : loc, size: size, color: color))
     }
     
     func clearTintedTiles()

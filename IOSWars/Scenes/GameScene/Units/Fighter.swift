@@ -17,6 +17,6 @@ class Fighter : Unit
     
     init( parent : SKNode, pos : CGPoint, owner : Owner )
     {
-        super.init( parent : parent,  pos: pos, type : UnitType.Fighter, damage : 4, health : 10, movement : 4, owner : owner  )
+        super.init( parent : parent,  pos: pos, type : UnitType.Fighter, damage : 4, health : 10, movement : 4,attack: 2 ,owner : owner  )
     }
 }

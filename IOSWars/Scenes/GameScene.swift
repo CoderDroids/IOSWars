@@ -26,7 +26,7 @@ class GameScene: SKScene {
     var touchDownPoint: CGPoint?
     var mapDragStart: CGPoint?
     var dragging : Bool = false
-    var movingUnit : Bool = false
+    var attackingUnit: Bool = false
     
     var tileMap : SKTileMapNode?
 
@@ -64,7 +64,7 @@ class GameScene: SKScene {
 
         let unit1 = Fighter( parent: tileMap!, pos : CGPoint( x: 11, y: 11 ), owner : Owner.Player )
         let unit2 = Knight( parent: tileMap!, pos : CGPoint( x: 13, y: 13 ), owner : Owner.Player )
-        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 14, y: 10 ), owner : Owner.Player )
+        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 16, y: 14 ), owner : Owner.Player )
         units.append(unit1)
         units.append(unit2)
         units.append(unit3)
@@ -102,18 +102,20 @@ class GameScene: SKScene {
                         if unit.contains(map_pos)  && !unit.hasMoved
                         {
                             self.currentUnit = unit
-                            Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
-                            movingUnit = true;
+                            Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange,color: UIColor(red: 0.2, green: 0.8, blue: 0.2, alpha: 0.3))
                             isProcessed = true
                             break
                         }
                     }
                 }
                 if isProcessed == false {
+
                     for enemy in enemies {
                         if enemy.contains(map_pos) {
-                            if self.currentUnit != nil {
+                            if self.currentUnit != nil && attackingUnit && Pathfinding.instance.unitDistnce(u1: (currentUnit?.position)!, u2: enemy.position) <= (currentUnit?.attackRange)! {
                                 GameplayManager.instance.battle( attacker : self.currentUnit!, defender: enemy )
+                                attackingUnit = false
+                                Pathfinding.instance.clearTintedTiles()
                                 self.currentUnit = nil
                                 isProcessed = true
                                 break
@@ -137,11 +139,14 @@ class GameScene: SKScene {
                 }
                 
                 if isProcessed == false {
-                    if self.currentUnit != nil {
-                        // move a unit to this point if the target point is range of unit.movementRange
-                        moveUnit(pos: pos, unit: &self.currentUnit!)
-                        self.currentUnit = nil
+                    if self.currentUnit != nil && !attackingUnit{
+                        if moveUnit(pos: pos, unit: &self.currentUnit!)
+                        {
+                            self.currentUnit = nil
+                        }
                     } else {
+                        attackingUnit = false
+                        Pathfinding.instance.clearTintedTiles()
                         touchDownPoint = pos
                         mapDragStart = tileMap?.position
                         backButton?.isHidden = true
@@ -172,29 +177,33 @@ class GameScene: SKScene {
         }
     }
     
-    private func moveUnit(pos: CGPoint, unit: inout Unit)
+    private func moveUnit(pos: CGPoint, unit: inout Unit)->Bool
     {
         
-        movingUnit = false
         Pathfinding.instance.clearTintedTiles()
 
         let path = Pathfinding.instance.getPath(startPoint: Pathfinding.instance.ScreenToNode(pos: unit.position), endPoint: Pathfinding.instance.tapToNode(tap: pos))
         
         
-        if path.count == 0{return}
+        if path.count == 0{return true}
         
         if path.count <= unit.movementRange
         {
             unit.position = path.last!
             unit.hasMoved = true
             Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
+            if(Pathfinding.instance.tintEnemyTiles(pos: pos,range: unit.attackRange,color: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 0.3), e: &enemies))
+            {
+                attackingUnit = true
+                return false
+            }
         }
+        return true
     }
     
     func touchUp(atPoint pos : CGPoint) {
         backButton?.isHidden = false
         dragging = false
-        //Pathfinding.instance.clearTintedTiles()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

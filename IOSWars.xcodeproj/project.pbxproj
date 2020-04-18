@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3C53637F244A5DD400C0D299 /* tintedSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C53637E244A5DD400C0D299 /* tintedSquare.swift */; };
-		3C536381244A5EDC00C0D299 /* greenTint.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C536380244A5EDC00C0D299 /* greenTint.png */; };
+		3C77BAEA244B83C400785E40 /* tint.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C77BAE9244B83C400785E40 /* tint.png */; };
 		3C88955E2448ADCE004C1719 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3C88955D2448ADCE004C1719 /* song.mp3 */; };
 		3C8895602448AFC2004C1719 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C88955F2448AFC2004C1719 /* SplashScene.swift */; };
 		3CB16DE2244A169600B8DE3F /* Pathfinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB16DE1244A169600B8DE3F /* Pathfinding.swift */; };
@@ -116,7 +116,7 @@
 
 /* Begin PBXFileReference section */
 		3C53637E244A5DD400C0D299 /* tintedSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tintedSquare.swift; sourceTree = "<group>"; };
-		3C536380244A5EDC00C0D299 /* greenTint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenTint.png; sourceTree = "<group>"; };
+		3C77BAE9244B83C400785E40 /* tint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tint.png; sourceTree = "<group>"; };
 		3C88955D2448ADCE004C1719 /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
 		3C88955F2448AFC2004C1719 /* SplashScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
 		3CB16DE1244A169600B8DE3F /* Pathfinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pathfinding.swift; sourceTree = "<group>"; };
@@ -402,7 +402,6 @@
 		A2AB6C6B243F5730007AA492 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				3C536380244A5EDC00C0D299 /* greenTint.png */,
 				A2AB6C6C243F5730007AA492 /* iOS */,
 				A22DDBB32449442F00A37E50 /* black-bridge.png */,
 				A22DDBAC2449442F00A37E50 /* catapult_icon.png */,
@@ -410,6 +409,7 @@
 				A2A8C46F242507120096D831 /* catapult2.png */,
 				A22DDBBB2449443000A37E50 /* health-normal.png */,
 				A22DDBB42449442F00A37E50 /* knight.png */,
+				3C77BAE9244B83C400785E40 /* tint.png */,
 				A2A8C471242507120096D831 /* knight2.png */,
 				A22DDBAE2449442F00A37E50 /* pause-button.png */,
 				A22DDBAD2449442F00A37E50 /* play-button.png */,
@@ -589,6 +589,7 @@
 				A22DDBCA2449443100A37E50 /* resource.png in Resources */,
 				A22DDBC22449443100A37E50 /* pause-button.png in Resources */,
 				A22DDBCE2449443100A37E50 /* tower-flag.png in Resources */,
+				3C77BAEA244B83C400785E40 /* tint.png in Resources */,
 				A2AB6C8A243F5731007AA492 /* catapult-83.5@2x.png in Resources */,
 				A2A8C473242507120096D831 /* soldier.png in Resources */,
 				A2AB6C84243F5731007AA492 /* catapult-20.png in Resources */,
@@ -617,7 +618,6 @@
 				A22DDBD02449443100A37E50 /* village.png in Resources */,
 				A22DDBCB2449443100A37E50 /* swordman.png in Resources */,
 				A22DDBC62449443100A37E50 /* troops.png in Resources */,
-				3C536381244A5EDC00C0D299 /* greenTint.png in Resources */,
 				A2AB6C88243F5731007AA492 /* catapult-40@2x.png in Resources */,
 				A22DDBC42449443100A37E50 /* catapult.png in Resources */,
 				A22DDBCD2449443100A37E50 /* player-base.png in Resources */,

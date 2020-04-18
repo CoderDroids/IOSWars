@@ -23,6 +23,7 @@ class Unit : SKSpriteNode
     var maxHealth : Float
     var unitType : UnitType
     var movementRange : Int
+    let attackRange: Int
     var unitOwner : Owner
     var hasMoved : Bool
     
@@ -41,13 +42,14 @@ class Unit : SKSpriteNode
 //        super.init( texture: texture, color: color, size: size )
 //    }
 //
-    init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int, owner : Owner )
+    init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int,attack: Int ,owner : Owner )
     {
         self.attack = damage
         self.currentHealth = health
         self.maxHealth = health
         self.unitType = type
         self.movementRange = movement
+        self.attackRange = attack
         self.unitOwner = owner
         
         self.hasMoved = false

@@ -16,6 +16,6 @@ class Mage : Unit
     
     init( parent : SKNode, pos : CGPoint, owner : Owner )
     {
-        super.init( parent : parent,  pos: pos, type : UnitType.Mage, damage : 15, health : 8, movement : 3, owner : owner  )
+        super.init( parent : parent,  pos: pos, type : UnitType.Mage, damage : 15, health : 8, movement : 3,attack: 3, owner : owner  )
     }
 }
