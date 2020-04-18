@@ -13,22 +13,25 @@ class OptionScene: SKScene {
     var helpButton : SKSpriteNode!
     var backButton : SKSpriteNode!
     
-    let effectSlider = UISlider(frame: CGRect(x: 200, y: 265, width: 100, height: 15))
-    let musicSlider = UISlider(frame: CGRect(x: 200, y: 150, width: 100, height: 15))
+    var effectSlider : UISlider!
+    var musicSlider : UISlider!
 
     
     override func didMove(to view: SKView )
     {
         helpButton = self.childNode( withName : "HelpButton" ) as! SKSpriteNode
         backButton = self.childNode( withName : "BackButton" ) as! SKSpriteNode
+
+        let h = UIScreen.main.bounds.height
         
+        effectSlider = UISlider(frame: CGRect(x: 200, y: h * 0.48, width: 100, height: 15))
         effectSlider.isContinuous = true
         effectSlider.maximumValue = 1.0
         effectSlider.minimumValue = 0.0
         effectSlider.value = Audio.instance.getEffectVolume()
         effectSlider.addTarget(self, action:#selector(effectSliderControl(sender:)), for: .valueChanged)
 
-        
+        musicSlider = UISlider(frame: CGRect(x: 200, y: h * 0.37, width: 100, height: 15))
         musicSlider.isContinuous = true
         musicSlider.maximumValue = 1.0
         musicSlider.minimumValue = 0.0

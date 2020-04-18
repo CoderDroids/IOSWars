@@ -15,6 +15,12 @@ class GameplayManager
     
     func battle( attacker : Unit, defender: Unit )
     {
+        let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height: 600 ), attacker : attacker, defender : defender )
+        game!.popups.append( attackPopup )
+    }
+    
+    func showUnitInfo( unit : Unit )
+    {
         
     }
     
@@ -40,11 +46,6 @@ class GameplayManager
     {
         let unitPurchase = UnitPurchasePopup( parent : game!, building : building )
         game!.popups.append( unitPurchase )
-    }
-    
-    func addPopup( popup : PopupNode )
-    {
-        game!.popups.append( popup )
     }
     
 }
