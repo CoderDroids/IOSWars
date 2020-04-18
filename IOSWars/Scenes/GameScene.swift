@@ -66,8 +66,6 @@ class GameScene: SKScene {
         units.append(unit1)
         units.append(unit2)
         units.append(unit3)
-        
-        self.currentUnit = unit1
 
         let enemy1 = Fighter( parent: tileMap!, pos : CGPoint( x: 18, y: 20 ), owner : Owner.Opponent )
         let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 17, y: 18 ), owner : Owner.Opponent )
@@ -98,9 +96,10 @@ class GameScene: SKScene {
             else
             {
                 let map_pos = self.convert(pos, to: self.tileMap!)
-                if isProcessed == false && self.popups.count == 0 {
+                if isProcessed == false && self.popups.count == 0 && self.currentUnit == nil {
                     for unit in units {
                         if unit.contains(map_pos) {
+                            self.currentUnit = unit
                             Pathfinding.instance.tintTiles(pos: pos,range: unit.movementRange)
                             isProcessed = true
                             break
@@ -110,16 +109,20 @@ class GameScene: SKScene {
                 if isProcessed == false {
                     for enemy in enemies {
                         if enemy.contains(map_pos) {
-                            if self.currentPopup == nil {
-                                let attackPopup = AttackPopup( parent : self, size : CGSize( width: 600, height: 600 ), attacker : self.currentUnit!, defender : enemy )
-                                popups.append(attackPopup)
+                            if self.currentUnit != nil {
+                                GameplayManager.instance.battle( attacker : self.currentUnit!, defender: enemy )
+                                isProcessed = true
+                                break
+                            }
+                            else {
+                                GameplayManager.instance.showUnitInfo( unit : enemy )
                                 isProcessed = true
                                 break
                             }
                         }
                     }
                 }
-                if isProcessed == false {
+                if isProcessed == false && self.currentUnit == nil {
                     for building in buildings {
                         if building.contains(map_pos) {
                             building.onInteract()
@@ -128,14 +131,21 @@ class GameScene: SKScene {
                         }
                     }
                 }
-            }
+                
+                if isProcessed == false {
+                    if self.currentUnit != nil {
+                        // move a unit to this point if the target point is range of unit.movementRange
+                        self.currentUnit = nil
+                    } else {
+                        touchDownPoint = pos
+                        mapDragStart = tileMap?.position
+                        backButton?.isHidden = true
+                        dragging = true
+                    }
+                    
 
-            if isProcessed == false {
-                touchDownPoint = pos
-                mapDragStart = tileMap?.position
-                backButton?.isHidden = true
-                dragging = true
-                Pathfinding.instance.clearTintedTiles()
+                    Pathfinding.instance.clearTintedTiles()
+                }
             }
         }
         //Pathfinding.instance.tintTiles(pos: pos,range: 5)
