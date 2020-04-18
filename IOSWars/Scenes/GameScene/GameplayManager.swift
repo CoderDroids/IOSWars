@@ -6,7 +6,7 @@
 //  Copyright © 2020 CoderDroids. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
 
 class GameplayManager
 {
@@ -18,8 +18,19 @@ class GameplayManager
         
     }
     
-    func BuyUnit( unit : Unit )
+    func buyUnit( unit : Unit )
     {
+    }
+    
+    func showUnitPurchasePopup( building : Building )
+    {
+        var unitPurchase = UnitPurchasePopup( parent : game!, building : building )
+        game!.popups.append( unitPurchase )
+    }
+    
+    func addPopup( popup : PopupNode )
+    {
+        game!.popups.append( popup )
     }
     
 }

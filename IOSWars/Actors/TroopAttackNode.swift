@@ -33,7 +33,7 @@ class TroopAttackNode : SKNode
         let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.35), statName : "Attack", statValue: Int(troop.attack) )
     
         // TODO : make this generic
-        let troopNode = UnitNode( parent : background, pos : CGPoint( x : 0, y : 0 ), type : troop.unitType )
+        let troopNode = UnitNode( parent : background, pos : CGPoint( x : 0, y : 0 ), size : CGSize( width: 100, height: 100 ), type : troop.unitType )
         let troopNameNode = TitleTextNode( parent : background, pos : CGPoint( x : 0, y : -background.size.height * 0.4), titleName: Unit.getUnitName( type: troop.unitType ) )
         
         parent.addChild( self )

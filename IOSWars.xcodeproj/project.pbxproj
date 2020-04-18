@@ -56,7 +56,7 @@
 		A22DDBE9244A287500A37E50 /* Fighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBE8244A287500A37E50 /* Fighter.swift */; };
 		A22DDBEB244A287E00A37E50 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEA244A287E00A37E50 /* Knight.swift */; };
 		A22DDBED244A288500A37E50 /* Mage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEC244A288500A37E50 /* Mage.swift */; };
-		A22DDBEF244A3BBD00A37E50 /* BuildingInfoPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEE244A3BBD00A37E50 /* BuildingInfoPopup.swift */; };
+		A22DDBEF244A3BBD00A37E50 /* UnitPurchasePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBEE244A3BBD00A37E50 /* UnitPurchasePopup.swift */; };
 		A22DDBF2244A918A00A37E50 /* Town.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DDBF1244A918A00A37E50 /* Town.swift */; };
 		A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24697F823EE6AF30000D5CA /* AppDelegate.swift */; };
 		A24697FD23EE6AF30000D5CA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A24697FC23EE6AF30000D5CA /* Actions.sks */; };
@@ -67,7 +67,6 @@
 		A246981423EE6AF80000D5CA /* IOSWarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246981323EE6AF80000D5CA /* IOSWarsTests.swift */; };
 		A246981F23EE6AF80000D5CA /* IOSWarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246981E23EE6AF80000D5CA /* IOSWarsUITests.swift */; };
 		A2A8C45D24244C160096D831 /* AttackPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C45C24244C160096D831 /* AttackPopup.swift */; };
-		A2A8C45F24244C300096D831 /* WorkshopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C45E24244C300096D831 /* WorkshopScene.swift */; };
 		A2A8C46224244F760096D831 /* ModelActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C46124244F760096D831 /* ModelActor.swift */; };
 		A2A8C464242450130096D831 /* UnitPriceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C463242450130096D831 /* UnitPriceNode.swift */; };
 		A2A8C4662424687C0096D831 /* TroopAttackNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A8C4652424687C0096D831 /* TroopAttackNode.swift */; };
@@ -165,7 +164,7 @@
 		A22DDBE8244A287500A37E50 /* Fighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fighter.swift; sourceTree = "<group>"; };
 		A22DDBEA244A287E00A37E50 /* Knight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knight.swift; sourceTree = "<group>"; };
 		A22DDBEC244A288500A37E50 /* Mage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mage.swift; sourceTree = "<group>"; };
-		A22DDBEE244A3BBD00A37E50 /* BuildingInfoPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingInfoPopup.swift; sourceTree = "<group>"; };
+		A22DDBEE244A3BBD00A37E50 /* UnitPurchasePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPurchasePopup.swift; sourceTree = "<group>"; };
 		A22DDBF1244A918A00A37E50 /* Town.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Town.swift; sourceTree = "<group>"; };
 		A24697F523EE6AF30000D5CA /* SmallWars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmallWars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24697F823EE6AF30000D5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		A246981E23EE6AF80000D5CA /* IOSWarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSWarsUITests.swift; sourceTree = "<group>"; };
 		A246982023EE6AF80000D5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2A8C45C24244C160096D831 /* AttackPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackPopup.swift; sourceTree = "<group>"; };
-		A2A8C45E24244C300096D831 /* WorkshopScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkshopScene.swift; sourceTree = "<group>"; };
 		A2A8C46124244F760096D831 /* ModelActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelActor.swift; sourceTree = "<group>"; };
 		A2A8C463242450130096D831 /* UnitPriceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPriceNode.swift; sourceTree = "<group>"; };
 		A2A8C4652424687C0096D831 /* TroopAttackNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TroopAttackNode.swift; sourceTree = "<group>"; };
@@ -279,7 +277,7 @@
 			children = (
 				A2A8C45C24244C160096D831 /* AttackPopup.swift */,
 				A22DDBE32449F77100A37E50 /* UnitInfoPopup.swift */,
-				A22DDBEE244A3BBD00A37E50 /* BuildingInfoPopup.swift */,
+				A22DDBEE244A3BBD00A37E50 /* UnitPurchasePopup.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -374,7 +372,6 @@
 				A22DDBD52449470400A37E50 /* Enemy.swift */,
 				A22DDBD42449470400A37E50 /* GameplayManager.swift */,
 				A22DDBD72449470400A37E50 /* Player.swift */,
-				A2A8C45E24244C300096D831 /* WorkshopScene.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -661,7 +658,7 @@
 				A2111CFE2420859000EB6CF3 /* MainMenuScene.swift in Sources */,
 				A2111D0724242BFC00EB6CF3 /* OptionScene.swift in Sources */,
 				A2A8C45D24244C160096D831 /* AttackPopup.swift in Sources */,
-				A22DDBEF244A3BBD00A37E50 /* BuildingInfoPopup.swift in Sources */,
+				A22DDBEF244A3BBD00A37E50 /* UnitPurchasePopup.swift in Sources */,
 				A22DDBD82449470400A37E50 /* Unit.swift in Sources */,
 				A2A8C46D24246C200096D831 /* UnitNode.swift in Sources */,
 				A22DDBF2244A918A00A37E50 /* Town.swift in Sources */,
@@ -672,7 +669,6 @@
 				A2111D012420859000EB6CF3 /* GameScene.swift in Sources */,
 				A2A8C4692424696E0096D831 /* StatNode.swift in Sources */,
 				A22DDBE12449DBFA00A37E50 /* EnemyUnit.swift in Sources */,
-				A2A8C45F24244C300096D831 /* WorkshopScene.swift in Sources */,
 				A22DDBEB244A287E00A37E50 /* Knight.swift in Sources */,
 				A24697F923EE6AF30000D5CA /* AppDelegate.swift in Sources */,
 				A22DDBDB2449470400A37E50 /* Enemy.swift in Sources */,

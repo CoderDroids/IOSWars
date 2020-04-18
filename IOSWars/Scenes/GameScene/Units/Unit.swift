@@ -23,7 +23,6 @@ class Unit : SKSpriteNode
     var maxHealth : Float
     var unitType : UnitType
     var movementRange : Int
-    var unitCost : Int
     var unitOwner : Owner
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,14 +40,13 @@ class Unit : SKSpriteNode
 //        super.init( texture: texture, color: color, size: size )
 //    }
 //
-    init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int, cost : Int, owner : Owner )
+    init( parent : SKNode, pos : CGPoint, type : UnitType, damage : Float, health : Float, movement : Int, owner : Owner )
     {
         self.attack = damage
         self.currentHealth = health
         self.maxHealth = health
         self.unitType = type
         self.movementRange = movement
-        self.unitCost = cost
         self.unitOwner = owner
         
         let imageName = Unit.getUnitImage( type : type )
@@ -104,6 +102,23 @@ class Unit : SKSpriteNode
             return "Catapult"
         default:
             return "Unit"
+        }
+    }
+    
+    class func getUnitCost( type : UnitType ) -> Int
+    {
+        switch type
+        {
+        case UnitType.Fighter:
+            return 200
+        case UnitType.Mage:
+            return 800
+        case UnitType.Knight:
+            return 400
+        case UnitType.Catapult:
+            return 1000
+        default:
+            return 0
         }
     }
 
