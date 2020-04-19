@@ -46,11 +46,41 @@ class AttackPopup : PopupNode
 
     }
     
+    init( parent : SKNode, size : CGSize, attacker : Unit, target : Building )
+    {
+        super.init()
+        
+        let w = size.width
+        let h = size.height
+        
+        self.zPosition = 1
+        
+        let attackerNode = TroopAttackNode( parent : self, pos : CGPoint( x : 0, y : h * 0.25 ), size : CGSize( width : w * 0.9, height : h * 0.45 ), troop : attacker, isAttacker : true )
+        //let defenderNode = BuildingNode()
+        
+        self.closeButton = SKSpriteNode( color : UIColor.blue, size : CGSize( width: 128, height : 64 ) )
+        self.closeButton!.position = CGPoint( x : 0, y: -h * 0.5 - 32 )
+        self.addChild( self.closeButton! )
+        
+        let okText = SKLabelNode()
+        okText.position = CGPoint( x : 0, y : -10 )
+        okText.text = "OK"
+        okText.fontSize = 30
+        okText.fontColor = SKColor.white
+        self.closeButton!.addChild(okText)
+        
+        parent.addChild( self )
+        
+        // do the attack result
+
+    }
+    
     
     override func onTouchDown( pos : CGPoint ) -> Bool
     {
         var popup_pos = self.convert(pos, to: self)
         if self.closeButton!.contains( popup_pos ) {
+            GameplayManager.instance.checkIfGameEnd()
             return true
         }
         return false

@@ -29,6 +29,34 @@ class GameplayManager
         game!.popups.append( attackPopup )
     }
     
+    func battle( attacker : Unit, target : Building )
+    {
+        let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height : 600 ), attacker : attacker, target: target )
+        game!.popups.append( attackPopup )
+    }
+    
+    func checkIfGameEnd()
+    {
+        var playerHomeExist = false
+        var enemyHomeExist = false
+        for building in game!.buildings {
+            if building.buildingType == BuildingType.HeadQuarter {
+                if building.buildingOwner == Owner.Player {
+                    playerHomeExist = true
+                }
+                else if building.buildingOwner == Owner.Opponent {
+                    enemyHomeExist = true
+                }
+            }
+        }
+        
+        if playerHomeExist == false {
+            gameEnd( isWon: false )
+        } else if enemyHomeExist == false {
+            gameEnd( isWon: true )
+        }
+    }
+    
     func showUnitInfo( unit : Unit )
     {
         
