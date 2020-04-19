@@ -150,7 +150,7 @@ class GameScene: SKScene {
                             if self.currentUnit != nil && attackingUnit {
                                 if(Pathfinding.instance.unitDistnce(u1: (currentUnit?.position)!, u2: building.position) <= (currentUnit?.attackRange)! && building.buildingOwner != Owner.Player)
                                 {
-                                    GameplayManager.instance.battle( attacker : self.currentUnit!, target: building )
+                                    GameplayManager.instance.battle( attacker : self.currentUnit!, target: building, showResult: true )
                                     break
                                 }
                             }
@@ -351,8 +351,8 @@ class GameScene: SKScene {
                 
                 if Pathfinding.instance.unitDistnce(u1: enemy.position, u2: Pathfinding.instance.NodeToScreen(grid: closestThing)) <= enemy.attackRange
                 {
-                    if(isUnit){GameplayManager.instance.battle( attacker : enemy, defender: closestUnit! )}
-                    else{GameplayManager.instance.battle( attacker : enemy, target: closestBuilding! )}
+                    if(isUnit){GameplayManager.instance.battle( attacker : enemy, defender: closestUnit!, showResult: false )}
+                    else{GameplayManager.instance.battle( attacker : enemy, target: closestBuilding!, showResult: false )}
                 }
             }
         }
