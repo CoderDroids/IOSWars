@@ -364,7 +364,8 @@ class GameScene: SKScene {
         enemyTurn = false
         spawnThisTurn = !spawnThisTurn
         if spawnThisTurn{return}
-
+        
+        //return
         for building in buildings
         {
             if building.buildingOwner == Owner.Opponent
