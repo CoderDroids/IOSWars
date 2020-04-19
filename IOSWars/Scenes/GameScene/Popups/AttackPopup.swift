@@ -80,7 +80,9 @@ class AttackPopup : PopupNode
     {
         var popup_pos = self.convert(pos, to: self)
         if self.closeButton!.contains( popup_pos ) {
-            GameplayManager.instance.checkIfGameEnd()
+            if GameplayManager.instance.checkIfGameEnd() {
+                return false
+            }
             return true
         }
         return false

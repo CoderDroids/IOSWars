@@ -74,7 +74,7 @@ class GameplayManager
         }
     }
     
-    func checkIfGameEnd()
+    func checkIfGameEnd() -> Bool
     {
         var playerHomeExist = false
         var enemyHomeExist = false
@@ -91,9 +91,12 @@ class GameplayManager
         
         if playerHomeExist == false {
             gameEnd( isWon: false )
+            return true
         } else if enemyHomeExist == false {
             gameEnd( isWon: true )
+            return true
         }
+        return false
     }
     
     func showUnitInfo( unit : Unit )
