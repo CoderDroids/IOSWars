@@ -38,13 +38,13 @@ class GameplayManager
     
     func battle( attacker : Unit, target : Building, showResult : Bool )
     {
-        
         if showResult {
             doBattle(attacker: attacker, target: target )
             let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height : 600 ), attacker : attacker, target: target )
             game!.popups.append( attackPopup )
         } else {
             doBattle(attacker: attacker, target: target )
+            checkIfGameEnd()
         }
     }
     
