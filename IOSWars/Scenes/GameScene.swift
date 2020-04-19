@@ -306,7 +306,7 @@ class GameScene: SKScene {
                     }
                 }
                 
-                if shortestDistance == 0{GameplayManager.instance.gameEnd(isWon: false);return}
+                if shortestDistance == 0{return}
                 
                 var closestThing: vector_int2
                 if(isUnit){closestThing = Pathfinding.instance.ScreenToNode(pos: closestUnit!.position)}
