@@ -62,11 +62,22 @@ class GameplayManager
         
     }
     
-    func buyUnit( type : UnitType, address : vector_int2 ) -> Bool
+    func buyUnit( type : UnitType, owner : Owner, address : vector_int2 ) -> Bool
     {
         let unitCost = Unit.getUnitCost(type: type )
-        if self.playerGold >= unitCost {
-            self.playerGold -= unitCost
+        var purchased = false
+        if owner == Owner.Player {
+            if self.playerGold >= unitCost {
+                self.playerGold -= unitCost
+                purchased = true
+            }
+        } else if owner == Owner.Opponent {
+            if self.enemyGold >= unitCost {
+                self.enemyGold -= unitCost
+                purchased = true
+            }
+        }
+        if purchased {
             var pos = CGPoint( x: CGFloat(address.x), y: CGFloat(address.y) )
             var unit : Unit
             switch( type )
@@ -82,7 +93,11 @@ class GameplayManager
             }
             // unit can't move right after it's purchased
             unit.hasMoved = true
-            game!.units.append(unit)
+            if owner == Owner.Player {
+                game!.units.append(unit)
+            } else if owner == Owner.Opponent {
+                game!.enemies.append(unit)
+            }
             return true
         }
         return false
