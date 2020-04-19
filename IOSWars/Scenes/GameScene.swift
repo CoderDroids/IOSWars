@@ -85,7 +85,7 @@ class GameScene: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
-        if enemyTurn{return}
+        //if enemyTurn{return}
         
         if backButton!.contains(pos) {
             let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
