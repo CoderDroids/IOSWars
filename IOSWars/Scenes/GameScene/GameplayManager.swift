@@ -70,6 +70,7 @@ class GameplayManager
         target.currentHealth = max( target.currentHealth - attackDamage, 0.0 )
         if target.currentHealth <= 0.0 {
             target.buildingOwner = attacker.unitOwner
+            target.color = Building.getBuildingColor(owner: attacker.unitOwner )
         }
     }
     
