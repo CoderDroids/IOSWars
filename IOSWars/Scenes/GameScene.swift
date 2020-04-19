@@ -71,10 +71,12 @@ class GameScene: SKScene {
 
         let unit1 = Fighter( parent: tileMap!, pos : CGPoint( x: 11, y: 11 ), owner : Owner.Player )
         let unit2 = Knight( parent: tileMap!, pos : CGPoint( x: 13, y: 13 ), owner : Owner.Player )
-        let unit3 = Mage( parent: tileMap!, pos : CGPoint( x: 16, y: 12 ), owner : Owner.Player )
+        let unit3 = Fighter( parent: tileMap!, pos : CGPoint( x: 14, y: 12 ), owner : Owner.Player )
+        let unit4 = Mage( parent: tileMap!, pos : CGPoint( x: 16, y: 12 ), owner : Owner.Player )
         units.append(unit1)
         units.append(unit2)
         units.append(unit3)
+        units.append(unit4)
 
         let enemy1 = Fighter( parent: tileMap!, pos : CGPoint( x: 18, y: 20 ), owner : Owner.Opponent )
         let enemy2 = Knight( parent: tileMap!, pos : CGPoint( x: 16, y: 15 ), owner : Owner.Opponent )

@@ -67,7 +67,7 @@ class Unit : SKSpriteNode
         switch( owner )
         {
         case Owner.Player:
-            return UIColor( red: 0, green: 1, blue: 0, alpha : 1 )
+            return UIColor( red: 0, green: 1, blue: 1, alpha : 1 )
         case Owner.Opponent:
             return UIColor.red
         default:
