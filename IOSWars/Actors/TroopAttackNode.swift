@@ -30,11 +30,14 @@ class TroopAttackNode : SKNode
         }
         addChild( background )
      
-        let statNode = StatNode( parent : background, pos : CGPoint( x : 0, y : background.size.height * 0.35), statName : "Attack", statValue: Int(troop.attack) )
-    
-        // TODO : make this generic
-        let troopNode = UnitNode( parent : background, pos : CGPoint( x : 0, y : 0 ), size : CGSize( width: 100, height: 100 ), type : troop.unitType )
-        let troopNameNode = TitleTextNode( parent : background, pos : CGPoint( x : 0, y : -background.size.height * 0.4), titleName: Unit.getUnitName( type: troop.unitType ) )
+
+        let troopNode = UnitNode( parent : background, pos : CGPoint( x : w * -0.3, y : 0 ), size : CGSize( width: 64, height: 64 ), type : troop.unitType )
+        
+        let attackNode = StatNode( parent : background, pos : CGPoint( x : w * 0.1, y : h * 0.3), size : CGSize( width : w * 0.6, height : h * 0.2 ), statName : "Attack", statValue: Int(troop.attack) )
+        let healthNode = StatNode( parent : background, pos : CGPoint( x : w * 0.1, y : 0.0), size : CGSize( width : w * 0.6, height : h * 0.2 ), statName : "Health", statValue: Int(troop.currentHealth) )
+        let troopNameNode = TitleTextNode( parent : background, pos : CGPoint( x : 0, y : h * -0.3), size : CGSize( width : w * 0.5, height : h * 0.2 ), titleName: Unit.getUnitName( type: troop.unitType ) )
+
+
         
         parent.addChild( self )
     }

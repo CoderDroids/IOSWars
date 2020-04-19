@@ -14,18 +14,18 @@ class StatNode : SKNode
         fatalError("init(coder:) has not been implemented")
     }
     
-    init( parent : SKNode, pos : CGPoint, statName : String, statValue : Int )
+    init( parent : SKNode, pos : CGPoint, size : CGSize, statName : String, statValue : Int )
     {
         super.init()
         
-        let w = UIScreen.main.bounds.width
-        let h = UIScreen.main.bounds.height
+        let w = size.width
+        let h = size.height
         self.position = pos
         
-        let background = SKSpriteNode( color : UIColor.orange, size : CGSize( width: w * 0.8, height: h * 0.08 ) )
+        let background = SKSpriteNode( color : UIColor.orange, size : CGSize( width: w, height: h ) )
         addChild(background)
         
-        let innerBackground = SKSpriteNode( color : UIColor.white, size : CGSize( width: w * 0.75, height: h * 0.07 ) )
+        let innerBackground = SKSpriteNode( color : UIColor.white, size : CGSize( width: w * 0.95, height: h * 0.9 ) )
         background.addChild( innerBackground )
 
         let statNameText = SKLabelNode()

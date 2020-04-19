@@ -122,7 +122,7 @@ class GameScene: SKScene {
                             if self.currentUnit != nil && attackingUnit {
                                 if(Pathfinding.instance.unitDistnce(u1: (currentUnit?.position)!, u2: enemy.position) <= (currentUnit?.attackRange)!)
                                 {
-                                    GameplayManager.instance.battle( attacker : self.currentUnit!, defender: enemy )
+                                    GameplayManager.instance.battle( attacker : self.currentUnit!, defender: enemy, showResult : true )
                                 }
                                 attackingUnit = false
                                 Pathfinding.instance.clearTintedTiles()
@@ -211,6 +211,20 @@ class GameScene: SKScene {
             }
         }
         return true
+    }
+    
+    func removeUnit( unit : Unit )
+    {
+        if unit.unitOwner == Owner.Player {
+            if let index = units.index( of: unit ) {
+                units.remove( at: index )
+            }
+        } else if unit.unitOwner == Owner.Opponent {
+            if let index = enemies.index( of: unit ) {
+                enemies.remove( at: index )
+            }
+        }
+        unit.removeFromParent()
     }
     
     func touchUp(atPoint pos : CGPoint) {

@@ -23,16 +23,53 @@ class GameplayManager
         self.enemyGold = 200
     }
     
-    func battle( attacker : Unit, defender: Unit )
+    func battle( attacker : Unit, defender: Unit, showResult : Bool )
     {
-        let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height: 600 ), attacker : attacker, defender : defender )
-        game!.popups.append( attackPopup )
+        
+        if showResult {
+            let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height: 600 ), attacker : attacker, defender : defender )
+        
+            game!.popups.append( attackPopup )
+        } else {
+            doBattle(attacker : attacker, defender: defender )
+        }
     }
     
-    func battle( attacker : Unit, target : Building )
+    func battle( attacker : Unit, target : Building, showResult : Bool )
     {
-        let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height : 600 ), attacker : attacker, target: target )
-        game!.popups.append( attackPopup )
+        
+        if showResult {
+            doBattle(attacker: attacker, target: target )
+            let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height : 600 ), attacker : attacker, target: target )
+            game!.popups.append( attackPopup )
+        } else {
+            doBattle(attacker: attacker, target: target )
+        }
+    }
+    
+    private func doBattle( attacker : Unit, defender: Unit )
+    {
+        var attackDamage = attacker.attack * attacker.currentHealth / attacker.maxHealth
+        defender.currentHealth = max( defender.currentHealth - attackDamage, 0.0 )
+        if defender.currentHealth <= 0.0 {
+            game!.removeUnit( unit: defender )
+        }
+        else {
+            var defenderDamage = defender.attack * defender.currentHealth / defender.maxHealth
+            attacker.currentHealth = max( attacker.currentHealth - defenderDamage, 0.0 )           
+            if attacker.currentHealth <= 0.0 {
+                game!.removeUnit( unit: attacker )
+            }
+        }
+    }
+    
+    private func doBattle( attacker : Unit, target: Building )
+    {
+        var attackDamage = attacker.attack * attacker.currentHealth / attacker.maxHealth
+        target.currentHealth = max( target.currentHealth - attackDamage, 0.0 )
+        if target.currentHealth <= 0.0 {
+            target.buildingOwner = attacker.unitOwner
+        }
     }
     
     func checkIfGameEnd()
