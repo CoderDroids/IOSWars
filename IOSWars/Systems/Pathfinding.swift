@@ -188,7 +188,7 @@ class Pathfinding
         myGraph!.remove([tempNode])
     }
     
-    func tintEnemyTiles(pos:CGPoint, range:Int, color :UIColor, e:inout[Unit])->Bool
+    func tintEnemyTiles(pos:CGPoint, range:Int, color :UIColor, e:inout[Unit], b: inout [Building])->Bool
     {
         var didFindEnemy = false
         let tileSize = CGSize(width: 0.8 * (map?.tileSize.width)!,height: 0.8 * (map?.tileSize.height)!)
@@ -203,6 +203,20 @@ class Pathfinding
                 tintTile(pos: enemyPoint, size: tileSize, color: color)
             }
         }
+        
+        for building in b
+        {
+            if(building.buildingOwner != Owner.Player)
+            {
+                let enemyPoint = ScreenToNode(pos: building.position)
+                if (distance(p1: gridPoint, p2: enemyPoint) <= range)
+                {
+                    didFindEnemy = true
+                    tintTile(pos: enemyPoint, size: tileSize, color: color)
+                }
+            }
+        }
+
         return didFindEnemy
     }
     
