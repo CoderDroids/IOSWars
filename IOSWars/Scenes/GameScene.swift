@@ -27,6 +27,7 @@ class GameScene: SKScene {
     var mapDragStart: CGPoint?
     var dragging : Bool = false
     var attackingUnit: Bool = false
+    var enemyTurn: Bool = false
     
     var tileMap : SKTileMapNode?
 
@@ -84,6 +85,8 @@ class GameScene: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
+        if enemyTurn{return}
+        
         if backButton!.contains(pos) {
             let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
             let gameScene = SKScene(fileNamed: "MainMenuScene" )!
@@ -91,6 +94,7 @@ class GameScene: SKScene {
         }
         else if turnButton!.contains(pos){
             GameplayManager.instance.takeTurn()
+            enemyTurn = true
         }
         else {
             var isProcessed = false
@@ -140,12 +144,24 @@ class GameScene: SKScene {
                         }
                     }
                 }
-                if isProcessed == false && self.currentUnit == nil {
+                if isProcessed == false{
                     for building in buildings {
                         if building.contains(map_pos) {
+                            if self.currentUnit != nil && attackingUnit {
+                                if(Pathfinding.instance.unitDistnce(u1: (currentUnit?.position)!, u2: building.position) <= (currentUnit?.attackRange)! && building.buildingOwner != Owner.Player)
+                                {
+                                    GameplayManager.instance.battle( attacker : self.currentUnit!, target: building )
+                                    break
+                                }
+                            }
+                            else
+                            {
+                            attackingUnit = false
+                            self.currentUnit = nil
                             building.onInteract()
                             isProcessed = true
                             break
+                            }
                         }
                     }
                 }
@@ -201,10 +217,11 @@ class GameScene: SKScene {
         
         if (path?.count)! <= unit.movementRange
         {
+            
             unit.position = (path?.last!)!
             unit.hasMoved = true
             Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
-            if(Pathfinding.instance.tintEnemyTiles(pos: pos,range: unit.attackRange,color: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 0.3), e: &enemies))
+            if(Pathfinding.instance.tintEnemyTiles(pos: pos,range: unit.attackRange,color: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 0.3), e: &enemies, b: &buildings))
             {
                 attackingUnit = true
                 return false
@@ -257,6 +274,9 @@ class GameScene: SKScene {
             self.lastUpdateTime = currentTime
         }
         
+        if enemyTurn
+        {takeEnemyTurn()}
+        
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         
@@ -268,5 +288,103 @@ class GameScene: SKScene {
         goldText!.text = "Gold: \(GameplayManager.instance.playerGold)"
         
         self.lastUpdateTime = currentTime
+    }
+    
+    func takeEnemyTurn()
+    {
+        for enemy in enemies
+        {
+            if !enemy.hasMoved
+            {
+                var shortestDistance :Int = 0
+                var closestUnit: Unit?
+                var closestBuilding: Building?
+                var isUnit = false
+                
+                for unit in units
+                {
+                    if(shortestDistance == 0)
+                    {
+                        shortestDistance = Pathfinding.instance.unitDistnce(u1: enemy.position, u2: unit.position)
+                        closestUnit = unit
+                        isUnit = true
+                    }
+                    else if shortestDistance > Pathfinding.instance.unitDistnce(u1: enemy.position, u2: unit.position)
+                    {
+                        shortestDistance = Pathfinding.instance.unitDistnce(u1: enemy.position, u2: unit.position)
+                        closestUnit = unit
+                        isUnit = true
+                    }
+                }
+                for building in buildings
+                {
+                    if building.buildingOwner == Owner.Opponent{continue}
+                    if(shortestDistance == 0)
+                    {
+                        shortestDistance = Pathfinding.instance.unitDistnce(u1: enemy.position, u2: building.position)
+                        closestBuilding = building
+                        isUnit = false
+                    }
+                    else if shortestDistance > Pathfinding.instance.unitDistnce(u1: enemy.position, u2: building.position)
+                    {
+                        shortestDistance = Pathfinding.instance.unitDistnce(u1: enemy.position, u2: building.position)
+                        closestBuilding = building
+                        isUnit = false
+                    }
+                }
+                
+                if shortestDistance == 0{return}
+                
+                var closestThing: vector_int2
+                if(isUnit){closestThing = Pathfinding.instance.ScreenToNode(pos: closestUnit!.position)}
+                else{closestThing = Pathfinding.instance.ScreenToNode(pos: closestBuilding!.position)}
+                
+                var path = Pathfinding.instance.getPathEnemy(startPoint: Pathfinding.instance.ScreenToNode(pos: enemy.position), endPoint: closestThing)
+                
+                //if path == nil{continue}
+                
+                if (path?.count)! <= enemy.movementRange{enemy.position = (path?.removeLast())!}else
+                {path = Array(path!.prefix(enemy.movementRange))}
+                enemy.position = (path?.last!)!
+                enemy.hasMoved = true
+                Pathfinding.instance.generateGraph(e: &enemies, u: &units, b: &buildings)
+                
+                if Pathfinding.instance.unitDistnce(u1: enemy.position, u2: Pathfinding.instance.NodeToScreen(grid: closestThing)) <= enemy.attackRange
+                {
+                    if(isUnit){GameplayManager.instance.battle( attacker : enemy, defender: closestUnit! )}
+                    else{GameplayManager.instance.battle( attacker : enemy, target: closestBuilding! )}
+                }
+            }
+        }
+        
+        let unitTypes : [UnitType] = [UnitType.Fighter, UnitType.Knight, UnitType.Mage]
+
+        var unit : Unit
+
+        for building in buildings
+        {
+            if building.buildingOwner == Owner.Opponent
+            {
+                if building.buildingType == BuildingType.HeadQuarter
+                {
+                    var pos = CGPoint( x: CGFloat(building.address.x), y: CGFloat(building.address.y) )
+
+                    switch(unitTypes[Int.random(in: 0..<unitTypes.count)] )
+                    {
+                    case UnitType.Fighter:
+                        unit = Fighter( parent: tileMap!, pos : pos , owner : Owner.Opponent )
+                    case .Knight:
+                        unit = Knight( parent: tileMap!, pos : pos , owner : Owner.Opponent )
+                    case .Mage:
+                        unit = Mage( parent: tileMap!, pos : pos , owner : Owner.Opponent )
+                    default:
+                        unit = Fighter( parent: tileMap!, pos : pos , owner : Owner.Opponent )
+                    }
+                    unit.hasMoved = true
+                    enemies.append(unit)
+                }
+            }
+        }
+        enemyTurn = false
     }
 }

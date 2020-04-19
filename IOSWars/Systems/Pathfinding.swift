@@ -101,6 +101,29 @@ class Pathfinding
         return pathPoints
     }
     
+    func getPathEnemy(startPoint: vector_int2, endPoint: vector_int2)->[CGPoint]? // this should use coordinates in map space
+    {
+        
+        var pathPoints: [CGPoint] = []
+                
+        let tempNode = GKGridGraphNode(gridPosition: startPoint)
+        myGraph?.connectToAdjacentNodes(node: tempNode)
+        
+        let tempNode2 = GKGridGraphNode(gridPosition: endPoint)
+        myGraph?.connectToAdjacentNodes(node: tempNode2)
+
+        
+        let pathNodes: [GKGridGraphNode] = myGraph!.findPath(from: myGraph!.node(atGridPosition: startPoint)!,to: myGraph!.node(atGridPosition: endPoint)!) as! [GKGridGraphNode]
+        for point in pathNodes
+        {
+            pathPoints.append(NodeToScreen(grid: point.gridPosition))
+        }
+        
+        myGraph!.remove([tempNode,tempNode2])
+        return pathPoints
+    }
+
+    
     func pathLength(from: vector_int2, to: vector_int2)->Int
     {
         if (myGraph!.node(atGridPosition: to) == nil || myGraph!.node(atGridPosition: from) == nil)
@@ -165,7 +188,7 @@ class Pathfinding
         myGraph!.remove([tempNode])
     }
     
-    func tintEnemyTiles(pos:CGPoint, range:Int, color :UIColor, e:inout[Unit])->Bool
+    func tintEnemyTiles(pos:CGPoint, range:Int, color :UIColor, e:inout[Unit], b: inout [Building])->Bool
     {
         var didFindEnemy = false
         let tileSize = CGSize(width: 0.8 * (map?.tileSize.width)!,height: 0.8 * (map?.tileSize.height)!)
@@ -180,6 +203,20 @@ class Pathfinding
                 tintTile(pos: enemyPoint, size: tileSize, color: color)
             }
         }
+        
+        for building in b
+        {
+            if(building.buildingOwner != Owner.Player)
+            {
+                let enemyPoint = ScreenToNode(pos: building.position)
+                if (distance(p1: gridPoint, p2: enemyPoint) <= range)
+                {
+                    didFindEnemy = true
+                    tintTile(pos: enemyPoint, size: tileSize, color: color)
+                }
+            }
+        }
+
         return didFindEnemy
     }
     
