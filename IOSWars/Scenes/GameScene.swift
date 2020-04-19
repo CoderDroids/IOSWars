@@ -29,6 +29,8 @@ class GameScene: SKScene {
     var attackingUnit: Bool = false
     var enemyTurn: Bool = false
     
+    var spawnThisTurn = false
+    
     var tileMap : SKTileMapNode?
 
     
@@ -85,8 +87,6 @@ class GameScene: SKScene {
     
     
     func touchDown(atPoint pos : CGPoint) {
-        //if enemyTurn{return}
-        
         if backButton!.contains(pos) {
             let transition = SKTransition.flipHorizontal( withDuration: 0.5 )
             let gameScene = SKScene(fileNamed: "MainMenuScene" )!
@@ -341,7 +341,7 @@ class GameScene: SKScene {
                 
                 var path = Pathfinding.instance.getPathEnemy(startPoint: Pathfinding.instance.ScreenToNode(pos: enemy.position), endPoint: closestThing)
                 
-                //if path == nil{continue}
+                if path == nil{continue}
                 
                 if (path?.count)! <= enemy.movementRange{enemy.position = (path?.removeLast())!}else
                 {path = Array(path!.prefix(enemy.movementRange))}
@@ -361,6 +361,11 @@ class GameScene: SKScene {
 
         var unit : Unit
 
+        enemyTurn = false
+        spawnThisTurn = !spawnThisTurn
+        if spawnThisTurn{return}
+        
+        //return
         for building in buildings
         {
             if building.buildingOwner == Owner.Opponent
@@ -385,6 +390,5 @@ class GameScene: SKScene {
                 }
             }
         }
-        enemyTurn = false
     }
 }
