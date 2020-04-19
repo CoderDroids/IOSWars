@@ -27,6 +27,7 @@ class GameplayManager
     {
         
         if showResult {
+            doBattle(attacker: attacker, defender: defender )
             let attackPopup = AttackPopup( parent : game!, size : CGSize( width: 600, height: 600 ), attacker : attacker, defender : defender )
         
             game!.popups.append( attackPopup )
