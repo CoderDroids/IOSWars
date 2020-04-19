@@ -101,6 +101,29 @@ class Pathfinding
         return pathPoints
     }
     
+    func getPathEnemy(startPoint: vector_int2, endPoint: vector_int2)->[CGPoint]? // this should use coordinates in map space
+    {
+        
+        var pathPoints: [CGPoint] = []
+                
+        let tempNode = GKGridGraphNode(gridPosition: startPoint)
+        myGraph?.connectToAdjacentNodes(node: tempNode)
+        
+        let tempNode2 = GKGridGraphNode(gridPosition: endPoint)
+        myGraph?.connectToAdjacentNodes(node: tempNode2)
+
+        
+        let pathNodes: [GKGridGraphNode] = myGraph!.findPath(from: myGraph!.node(atGridPosition: startPoint)!,to: myGraph!.node(atGridPosition: endPoint)!) as! [GKGridGraphNode]
+        for point in pathNodes
+        {
+            pathPoints.append(NodeToScreen(grid: point.gridPosition))
+        }
+        
+        myGraph!.remove([tempNode,tempNode2])
+        return pathPoints
+    }
+
+    
     func pathLength(from: vector_int2, to: vector_int2)->Int
     {
         if (myGraph!.node(atGridPosition: to) == nil || myGraph!.node(atGridPosition: from) == nil)
